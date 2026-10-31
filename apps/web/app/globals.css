@@ -1,61 +1,518 @@
-import { Badge, Button, Card, StatCard, PageHeader } from "@lugha/ui";
+:root {
+  --bg: #07111e;
+  --panel: #0f172a;
+  --panel-alt: #111827;
+  --card: rgba(15, 23, 42, 0.86);
+  --line: rgba(148, 163, 184, 0.22);
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --accent: #7dd3fc;
+  --success: #34d399;
+  --shadow: 0 24px 60px rgba(15, 23, 42, 0.38);
+}
 
-const skills = [
-  { name: "Speaking", level: "Advanced", value: "89%" },
-  { name: "Listening", level: "Strong", value: "83%" },
-  { name: "Vocabulary", level: "Good", value: "91%" },
-  { name: "Grammar", level: "Steady", value: "76%" },
-];
+html {
+  scroll-behavior: smooth;
+}
 
-export default function ProfilePage() {
-  return (
-    <main className="page-shell">
-      <PageHeader
-        eyebrow="Your profile"
-        title="Amara Parker"
-        subtitle="Spanish learner • Intermediate track • 12-day streak"
-        actions={<Button>Update goals</Button>}
-      />
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(180deg, #020817 0%, #07111e 36%, #0b1120 100%);
+  color: var(--text);
+}
 
-      <div className="stats-row">
-        <StatCard label="Current streak" value="12 days" />
-        <StatCard label="XP earned" value="1,540" />
-        <StatCard label="Lessons done" value="34" />
-        <StatCard label="Weekly goal" value="4/5" />
-      </div>
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-      <div className="content-grid">
-        <Card title="Skill focus" description="Your strongest growth is happening in daily speaking and listening practice.">
-          <div className="list-stack">
-            {skills.map((skill) => (
-              <div key={skill.name} className="topic-row">
-                <div>
-                  <strong>{skill.name}</strong>
-                  <small>{skill.level}</small>
-                </div>
-                <Badge variant="success">{skill.value}</Badge>
-              </div>
-            ))}
-          </div>
-        </Card>
+* {
+  box-sizing: border-box;
+}
 
-        <Card title="Goals" description="Keep momentum by finishing the next milestone in your weekly plan.">
-          <div className="goal-list">
-            <div className="goal-item">
-              <span>Complete 2 speaking sessions</span>
-              <strong>On track</strong>
-            </div>
-            <div className="goal-item">
-              <span>Review 25 new words</span>
-              <strong>Due today</strong>
-            </div>
-            <div className="goal-item">
-              <span>Finish travel unit</span>
-              <strong>3 days left</strong>
-            </div>
-          </div>
-        </Card>
-      </div>
-    </main>
-  );
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  padding: 0.85rem 0.9rem;
+}
+
+label {
+  display: grid;
+  gap: 0.55rem;
+  color: var(--muted);
+}
+
+.shell,
+.page-shell,
+.dashboard-shell {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+.page-shell {
+  min-height: 100vh;
+}
+
+.narrow-shell {
+  max-width: 720px;
+}
+
+.topbar,
+.dashboard-header,
+.stats-row,
+.nav-actions,
+.cta-row,
+.panel-header,
+.topic-row,
+.plan-item,
+.brand-wrap,
+.inline-row,
+.meta-row {
+  display: flex;
+  align-items: center;
+}
+
+.topbar {
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0 1.8rem;
+}
+
+.brand-wrap {
+  gap: 0.75rem;
+}
+
+.brand-mark {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #a78bfa);
+  color: #020617;
+  font-weight: 800;
+}
+
+.brand-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: var(--muted);
+}
+
+.nav a {
+  transition: color 0.2s ease;
+}
+
+.nav a:hover,
+.side-nav a:hover {
+  color: var(--text);
+}
+
+.nav-actions,
+.cta-row {
+  gap: 0.9rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 0 2rem;
+}
+
+.hero-copy h1 {
+  max-width: 620px;
+  margin: 1rem 0 0.8rem;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 0.96;
+}
+
+.hero-copy p {
+  max-width: 560px;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.mini-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-panel {
+  width: min(100%, 430px);
+  border: 1px solid var(--line);
+  background: rgba(15, 23, 42, 0.88);
+  border-radius: 28px;
+  padding: 1.2rem;
+  box-shadow: var(--shadow);
+}
+
+.panel-header {
+  justify-content: space-between;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+.progress-ring {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  background: conic-gradient(var(--success) 0 84%, rgba(255, 255, 255, 0.06) 84% 100%);
+  display: grid;
+  place-items: center;
+}
+
+.ring-inner {
+  width: 120px;
+  height: 120px;
+  background: #08111d;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.lesson-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.lesson-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0.9rem;
+  border-radius: 14px;
+  background: rgba(148, 163, 184, 0.05);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.section-block {
+  padding-top: 3rem;
+}
+
+.section-heading {
+  display: grid;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.feature-grid,
+.lesson-grid,
+.stack-grid,
+.content-grid {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.feature-grid,
+.lesson-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.lesson-card {
+  background: rgba(15, 23, 42, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.lesson-level {
+  color: var(--accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.lesson-card h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.lesson-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.cta-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--line);
+  background: rgba(15, 23, 42, 0.74);
+  border-radius: 24px;
+  padding: 1.5rem 1.75rem;
+  margin-top: 2.5rem;
+}
+
+.dashboard-shell {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1.5rem;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: rgba(15, 23, 42, 0.76);
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  color: var(--muted);
+}
+
+.side-nav a {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  border-radius: 12px;
+}
+
+.side-nav a.active {
+  background: rgba(125, 211, 252, 0.1);
+  color: var(--text);
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(148, 163, 184, 0.05);
+  color: var(--muted);
+}
+
+.dashboard-main {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.dashboard-header {
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dashboard-header h1 {
+  margin: 0.5rem 0 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.stats-row {
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.content-grid {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.stack-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1.5rem;
+}
+
+.meta-row {
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.4rem 0.7rem;
+  background: rgba(148, 163, 184, 0.08);
+  color: var(--muted);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  font-size: 0.72rem;
+}
+
+.spacer {
+  height: 0.25rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--muted);
+}
+
+.checkbox-label input {
+  width: auto;
+}
+
+.inline-row {
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--muted);
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  color: var(--muted);
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 1px;
+  background: rgba(148, 163, 184, 0.18);
+}
+
+.divider span {
+  position: relative;
+  background: rgba(15, 23, 42, 0.85);
+  padding: 0 0.7rem;
+}
+
+.list-stack,
+.goal-list {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.goal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 12px;
+  background: rgba(148, 163, 184, 0.04);
+  padding: 0.9rem 0.8rem;
+}
+
+.goal-item strong {
+  color: var(--text);
+}
+
+.topic-row,
+.plan-item {
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0.2rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.topic-row:last-child,
+.plan-item:last-child {
+  border-bottom: none;
+}
+
+.plan-item strong,
+.topic-row strong {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.plan-item small,
+.topic-row small {
+  color: var(--muted);
+}
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.check-list {
+  color: var(--muted);
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding-left: 1.1rem;
+  line-height: 1.8;
+}
+
+.compact-block {
+  padding-top: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .content-grid,
+  .feature-grid,
+  .lesson-grid,
+  .stack-grid,
+  .dashboard-shell,
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar,
+  .dashboard-header,
+  .cta-banner,
+  .inline-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav {
+    display: none;
+  }
 }
