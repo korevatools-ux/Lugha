@@ -1,34 +1,38 @@
-import { Badge, Button, Card } from "@lugha/ui";
+import { Badge, Button, Card, PageHeader } from "@lugha/ui";
+import { lessonCatalog } from "@/lib/content";
+
+const spotlight = lessonCatalog[0];
 
 export default function LessonsPage() {
   return (
     <main className="page-shell">
-      <header className="page-header">
+      <PageHeader
+        eyebrow="Learning library"
+        title="Your lessons"
+        subtitle="Choose a track that matches your pace and goals. Each lesson is built to turn everyday language into confident speaking habits."
+        actions={<Button>Continue path</Button>}
+      />
+
+      <section className="spotlight-card">
         <div>
-          <Badge>Learning library</Badge>
-          <h1>Your lessons</h1>
+          <Badge variant="success">Featured lesson</Badge>
+          <h2>{spotlight.title}</h2>
+          <p>{spotlight.description}</p>
         </div>
-        <Button>Continue path</Button>
-      </header>
+        <Button>Start now</Button>
+      </section>
 
       <div className="stack-grid">
-        <Card title="Starter phrases" description="Build confidence with practical greetings, introductions, and everyday phrases.">
-          <div className="meta-row">
-            <Badge variant="neutral">Beginner</Badge>
-            <span className="meta-pill">15 min</span>
-          </div>
-          <div className="spacer" />
-          <Button variant="soft">Open lesson</Button>
-        </Card>
-
-        <Card title="Travel essentials" description="Learn useful phrases for airports, hotels, transportation, and restaurants.">
-          <div className="meta-row">
-            <Badge variant="neutral">Everyday</Badge>
-            <span className="meta-pill">18 min</span>
-          </div>
-          <div className="spacer" />
-          <Button variant="soft">Open lesson</Button>
-        </Card>
+        {lessonCatalog.map((lesson) => (
+          <Card key={lesson.slug} title={lesson.title} description={lesson.description}>
+            <div className="meta-row">
+              <Badge variant="neutral">{lesson.level}</Badge>
+              <span className="meta-pill">{lesson.duration}</span>
+            </div>
+            <div className="spacer" />
+            <Button variant="soft">Open lesson</Button>
+          </Card>
+        ))}
       </div>
     </main>
   );
