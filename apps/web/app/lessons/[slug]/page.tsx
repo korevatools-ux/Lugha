@@ -1,52 +1,75 @@
-import { Badge, Button, Card, PageHeader } from "@lugha/ui";
-import { getLessonBySlug, lessonCatalog } from "@/lib/content";
+"use client";
 
-export default function LessonDetailPage({ params }: { params: { slug: string } }) {
-  const lesson = getLessonBySlug(params.slug);
+import { useEffect, useState } from "react";
+import { Badge, Button, Card, PageHeader } from "@lugha/ui";
+import { fetchJson } from "@/lib/api";
+
+type Lesson = {
+  id: string;
+  title: string;
+  level: string;
+  duration: number;
+  description: string;
+  category: string;
+};
+
+export default function LessonsPage() {
+  const [lessons, setLessons] = useState<Lesson[]>([]);
+
+  useEffect(() => {
+    fetchJson<{ lessons: Lesson[] }>("/api/lessons")
+      .then((data) => setLessons(data.lessons))
+      .catch(() => setLessons([
+        {
+          id: "starter-phrases",
+          title: "Starter phrases",
+          level: "Beginner",
+          duration: 15,
+          description: "Build confidence with practical greetings, introductions, and everyday phrases.",
+          category: "Foundations",
+        },
+      ]));
+  }, []);
+
+  const spotlight = lessons[0] ?? {
+    id: "starter-phrases",
+    title: "Starter phrases",
+    level: "Beginner",
+    duration: 15,
+    description: "Build confidence with practical greetings, introductions, and everyday phrases.",
+    category: "Foundations",
+  };
 
   return (
-    <main className="page-shell narrow-shell">
+    <main className="page-shell">
       <PageHeader
-        eyebrow={lesson.category}
-        title={lesson.title}
-        subtitle={lesson.description}
-        actions={<Button>Start lesson</Button>}
+        eyebrow="Learning library"
+        title="Your lessons"
+        subtitle="Choose a track that matches your pace and goals. Each lesson is built to turn everyday language into confident speaking habits."
+        actions={<Button>Continue path</Button>}
       />
 
-      <div className="detail-layout">
-        <Card title="What you'll practice" description="A focused learning path designed to build confidence and fluency.">
-          <ul className="check-list">
-            {lesson.outcomes.map((outcome) => (
-              <li key={outcome}>{outcome}</li>
-            ))}
-          </ul>
-        </Card>
-
-        <Card title="Recommended next steps" description="Follow this structured path to keep improving across sessions.">
-          <div className="goal-list">
-            <div className="goal-item"><span>Warm up</span><strong>3 min</strong></div>
-            <div className="goal-item"><span>Core practice</span><strong>8 min</strong></div>
-            <div className="goal-item"><span>Review</span><strong>4 min</strong></div>
-          </div>
-        </Card>
-      </div>
-
-      <section className="section-block compact-block">
-        <div className="section-heading narrow">
-          <Badge>Continue exploring</Badge>
-          <h2>More lessons</h2>
+      <section className="spotlight-card">
+        <div>
+          <Badge variant="success">Featured lesson</Badge>
+          <h2>{spotlight.title}</h2>
+          <p>{spotlight.description}</p>
         </div>
-        <div className="lesson-grid">
-          {lessonCatalog.filter((item) => item.slug !== lesson.slug).slice(0, 2).map((entry) => (
-            <article key={entry.slug} className="lesson-card" style={{ borderTop: `4px solid ${entry.accent}` }}>
-              <span className="lesson-level">{entry.level}</span>
-              <h3>{entry.title}</h3>
-              <p>{entry.description}</p>
-              <Button variant="ghost">Open lesson</Button>
-            </article>
-          ))}
-        </div>
+        <Button>Start now</Button>
       </section>
+
+      <div className="stack-grid">
+        {lessons.map((lesson) => (
+          <Card key={lesson.id} title={lesson.title} description={lesson.description}>
+            <div className="meta-row">
+              <Badge variant="neutral">{lesson.level}</Badge>
+              <span className="meta-pill">{lesson.duration} min</span>
+            </div>
+            <div className="spacer" />
+            <Button variant="soft">Open lesson</Button>
+          </Card>
+        ))}
+      </div>
     </main>
   );
 }
