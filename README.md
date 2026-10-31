@@ -1,45 +1,103 @@
-# Lugha
+import cors from "cors";
+import dotenv from "dotenv";
+import express, { Request, Response } from "express";
 
-Lugha is a full-stack product starter built as a monorepo with a modern web app and API.
+dotenv.config();
 
-## Stack
+const app = express();
+const port = Number(process.env.API_PORT || 4000);
 
-- Frontend: Next.js + TypeScript + Tailwind-ready styling
-- API: Express + TypeScript
-- Shared UI: local workspace package
-- Tooling: npm workspaces, ESLint, TypeScript
+const lessons = [
+  {
+    id: "starter-phrases",
+    title: "Starter phrases",
+    level: "Beginner",
+    duration: 15,
+    description: "Everyday phrases for travel and introductions.",
+  },
+  {
+    id: "travel-essentials",
+    title: "Travel essentials",
+    level: "Beginner",
+    duration: 18,
+    description: "Navigate airports, hotels, and restaurants with confidence.",
+  },
+  {
+    id: "workplace-basics",
+    title: "Workplace basics",
+    level: "Intermediate",
+    duration: 22,
+    description: "Practice professional conversation and small talk.",
+  },
+  {
+    id: "conversation-flow",
+    title: "Conversation flow",
+    level: "Intermediate",
+    duration: 25,
+    description: "Move from words to natural, clear communication with practical dialogue.",
+  },
+];
 
-## Repositories and apps
+const vocabulary = [
+  { word: "Hola", translation: "Hello", category: "Greeting" },
+  { word: "Gracias", translation: "Thank you", category: "Politeness" },
+  { word: "Comida", translation: "Food", category: "Everyday" },
+  { word: "Viaje", translation: "Trip", category: "Travel" },
+  { word: "Trabajo", translation: "Work", category: "Career" },
+  { word: "Reunión", translation: "Meeting", category: "Work" },
+];
 
-- `apps/web` — Next.js storefront / dashboard frontend
-- `apps/api` — Express API server
-- `packages/ui` — shared UI components
+const progress = {
+  streak: 12,
+  lessonsCompleted: 34,
+  xpEarned: 1540,
+  mastery: 81,
+  nextMilestone: "Complete 2 more sessions this week",
+};
 
-## Quick start
+const profile = {
+  name: "Amara Parker",
+  language: "Spanish",
+  level: "Intermediate",
+  streak: 12,
+  weeklyGoal: "4/5 sessions",
+};
 
-1. Install dependencies:
-   npm install
-2. Copy environment variables:
-   cp .env.example .env
-3. Start the app:
-   npm run dev
+app.use(cors());
+app.use(express.json());
 
-This runs the web app and API in parallel.
+app.get("/health", (_req: Request, res: Response) => {
+  res.json({ status: "ok", service: "lugha-api" });
+});
 
-## Available commands
+app.get("/api/hello", (_req: Request, res: Response) => {
+  res.json({
+    message: "Welcome to Lugha API",
+    status: "ready",
+    timestamp: new Date().toISOString(),
+  });
+});
 
-- `npm run dev` — run both apps
-- `npm run build` — build web app and API
-- `npm run lint` — lint both apps
-- `npm run start:web` — start the frontend production build
-- `npm run start:api` — start the API production build
+app.get("/api/lessons", (_req: Request, res: Response) => {
+  res.json({ lessons });
+});
 
-## Default URLs
+app.get("/api/vocabulary", (_req: Request, res: Response) => {
+  res.json({ vocabulary });
+});
 
-- Web app: http://localhost:3000
-- API: http://localhost:4000
+app.get("/api/progress", (_req: Request, res: Response) => {
+  res.json({ progress });
+});
 
-## Development notes
+app.get("/api/profile", (_req: Request, res: Response) => {
+  res.json({ profile });
+});
 
-- Use the root `.env` file to override local environment settings.
-- The API is intentionally simple and can be expanded with authentication, database integrations, and business logic.
+app.get("/api/overview", (_req: Request, res: Response) => {
+  res.json({ lessons, vocabulary, progress, profile });
+});
+
+app.listen(port, () => {
+  console.log(`API running on http://localhost:${port}`);
+});
