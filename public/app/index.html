@@ -396,7 +396,7 @@ function uiStart(){
 }
 // Languages without a built-in pack: the AI translates the interface once (in Claude) and it is saved on the device.
 async function uiAI(code){
-  const sample=window.claude ? await window.claude.use("sample").catch(()=>null) : null; if(!sample) return;
+  const sample=await getSample(); if(!sample) return;
   const src=I18N.keys.map((k,i)=>(I18N.packs.en[i]||k));
   const name=uiNameOf(code,"en"); const out=new Array(src.length).fill(null); const N=90;
   try{
@@ -691,7 +691,64 @@ function aiCourse(){ S.ai=S.ai||{}; return S.ai[aiKey()]; }
 function lessonList(){ if(isDE()) return DE_COURSES[curLevel()]; const c=aiCourse(); return c?c.lessons:[]; }
 function lk(n){ return (isDE()&&curLevel()==="B1") ? String(n) : aiKey()+"#"+n; }
 function doneScore(n){ return S.lessons[lk(n)]; }
-async function getSample(){ return window.claude ? await window.claude.use("sample").catch(()=>null) : null; }
+/* ---------- AI: Claude inside Claude, Lugha's own server (/api/ai) on the website ---------- */
+// Function declarations only (no top-level const), so these are ready before any code calls them.
+function webAI(){ return !window.claude&&/^https?:/.test(location.protocol); }
+function hasAI(){ return !!window.claude||webAI(); }
+async function getSample(){
+  if(window.claude) return await window.claude.use("sample").catch(()=>null);
+  return webAI()?webSample():null;
+}
+// Same shape as Claude's sample: sample(input,{signal,onText,modelTier}) -> {text,truncated},
+// sample.json(input,opts) -> parsed value, failures reject with {code,message,text?}.
+var LUGHA_AI=null;
+function webSample(){
+  if(LUGHA_AI) return LUGHA_AI;
+  const MAX=3; let running=0; const waiting=[];
+  const slot=()=>new Promise(r=>{ if(running<MAX){ running++; r(); } else waiting.push(r); });
+  const free=()=>{ const next=waiting.shift(); if(next) next(); else running--; };
+  const fail=(code,message,text)=>{ const e={code,message}; if(text) e.text=text; return e; };
+  async function run(input,opts,json){
+    opts=opts||{};
+    const messages=typeof input==="string"?[{role:"user",content:input}]:input;
+    const stream=!json&&typeof opts.onText==="function";
+    await slot();
+    let got="";
+    try{
+      if(opts.signal&&opts.signal.aborted) throw fail("cancelled","Stopped.");
+      let res;
+      try{
+        res=await fetch("/api/ai",{method:"POST",headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({messages,tier:opts.modelTier||"default",json:!!json,stream}),signal:opts.signal});
+      }catch(e){ throw (e&&e.name==="AbortError")?fail("cancelled","Stopped."):fail("network","Couldn't reach Lugha's server."); }
+      if(!res.ok){
+        let j={}; try{ j=await res.json(); }catch(e){}
+        throw fail(j.code||(res.status===429?"rate_limited":"server_error"),j.error||("Server error "+res.status));
+      }
+      if(!stream){ const j=await res.json(); return {text:String(j.text||""),truncated:!!j.truncated}; }
+      const reader=res.body.getReader(), dec=new TextDecoder();
+      try{
+        for(;;){
+          const {done,value}=await reader.read(); if(done) break;
+          const delta=dec.decode(value,{stream:true}); if(!delta) continue;
+          got+=delta; opts.onText({text:got,delta});
+        }
+      }catch(e){ throw (e&&e.name==="AbortError")?fail("cancelled","Stopped.",got):fail("network","The connection dropped.",got); }
+      if(!got.trim()) throw fail("server_error","The AI sent an empty answer.");
+      return {text:got,truncated:false};
+    }finally{ free(); }
+  }
+  const sample=(input,opts)=>run(input,opts,false);
+  sample.json=async(input,opts)=>{
+    const {text}=await run(input,opts,true);
+    const t=text.replace(/^\s*```(?:json)?\s*/i,"").replace(/\s*```\s*$/,"").trim();
+    try{ return JSON.parse(t); }catch(e){}
+    const a=t.search(/[\[{]/), b=Math.max(t.lastIndexOf("]"),t.lastIndexOf("}"));
+    if(a>=0&&b>a){ try{ return JSON.parse(t.slice(a,b+1)); }catch(e){} }
+    throw fail("bad_json","The AI's answer wasn't valid JSON.");
+  };
+  LUGHA_AI=sample; return sample;
+}
 function aiErr(e){ return e&&e.code==="rate_limited" ? "Too many requests. Please try again in a few minutes." : (e&&(e.code==="not_granted"||e.code==="sampling_disabled")) ? "The AI isn't available on this account." : "That didn't work. Please try again."; }
 
 
@@ -791,9 +848,9 @@ function mapScroll(){ const c=document.querySelector(".node-row.cur"); if(c) set
 let dictLookHTML="", dictLookQ="", dictLookT;
 const dxCache=(()=>{ try{ return JSON.parse(localStorage.getItem("lugha-dx")||"{}"); }catch(e){ return {}; } })();
 function dxSave(k,v){ dxCache[k]=v; const ks=Object.keys(dxCache); if(ks.length>200) delete dxCache[ks[0]]; try{ localStorage.setItem("lugha-dx",JSON.stringify(dxCache)); }catch(e){} }
-function dxPair(){ return `${curCode().slice(0,2).toUpperCase()}/${(window.claude?UI_LANG:"en").toUpperCase()}`; }
+function dxPair(){ return `${curCode().slice(0,2).toUpperCase()}/${(hasAI()?UI_LANG:"en").toUpperCase()}`; }
 async function dxAI(q){
-  const sample=window.claude ? await window.claude.use("sample").catch(()=>null) : null; if(!sample) return null;
+  const sample=await getSample(); if(!sample) return null;
   const L=curLang(), U=UI_NAME();
   const j=await sample.json(`You are a precise bilingual dictionary like dict.cc for a learner of ${L} whose own language is ${U}. Look up: "${q}". If it is a ${U} word, give the ${L} words for it. Reply with only JSON:
 {"forms":[{"pos":"NOUN|VERB|ADJ|ADV|PREP|CONJ|PHRASE","forms":"the main ${L} forms separated by ' | ', e.g. 'die Würde | die Würden' or 'werden | wurde | geworden'","note":"very short note in square-bracket style, or empty"}],
@@ -812,7 +869,7 @@ async function dxWiki(q){
   return {src:"wiki",forms:[],entries:[]};
 }
 function dxRender(q,d){
-  const code=curCode(), tl=window.claude?UI_LANG:"en";
+  const code=curCode(), tl=hasAI()?UI_LANG:"en";
   if(!d||!d.entries.length) return `<div class="dx-none">${mascot("mini-m")}<p class="muted">Kein Eintrag für „${esc(q)}“ gefunden.</p></div>`;
   const forms=d.forms.length?`<div class="dx-forms">${d.forms.map(f=>`<div class="dx-pos">${esc(String(f.pos||"").toUpperCase())}</div><div data-noi18n>${esc(String(f.forms||"")).split(" | ").join(' <span class="dx-bar">|</span> ')}${f.note?` <span class="dx-note">${esc(String(f.note))}</span>`:""}</div>`).join("")}</div>`:"";
   return forms+`<div class="dx-list">${d.entries.map((e,i)=>`<div class="dx-e"><button class="dx-say" data-dsay="${esc(e.head)}" data-lang="${code}" aria-label="Vorlesen">🔊</button>
@@ -824,7 +881,7 @@ function dxRender(q,d){
 }
 async function dxLookup(q){
   q=q.trim(); if(!q||q.length<2){ dictLookHTML=""; dictLookQ=""; const b=$("#dxBox"); if(b) b.innerHTML=""; return; }
-  const key=curCode()+"|"+(window.claude?UI_LANG:"en")+"|"+q.toLowerCase(); dictLookQ=q;
+  const key=curCode()+"|"+(hasAI()?UI_LANG:"en")+"|"+q.toLowerCase(); dictLookQ=q;
   const box=$("#dxBox"); if(box) box.innerHTML=`<p class="muted dx-wait">🔎 „${esc(q)}“ …</p>`;
   let d=dxCache[key];
   if(!d){ try{ d=await dxAI(q); }catch(e){ d=null; } if(!d){ d=await dxWiki(q); } if(d&&d.entries.length) dxSave(key,d); }
@@ -887,7 +944,7 @@ function questsToday(){
   let h=0; for(const ch of key) h=(h*131+ch.charCodeAt(0))>>>0;
   const rnd=()=>{ h=(h*1103515245+12345)>>>0; return h/4294967296; };
   const hasLessons=(lessonList()||[]).length>0;
-  const pool=Object.keys(QUESTS).filter(k=>{ const q=QUESTS[k]; if(q.de&&!isDE()) return false; if(q.ai&&!window.claude) return false; if(k==="week"&&!hasLessons) return false; return true; });
+  const pool=Object.keys(QUESTS).filter(k=>{ const q=QUESTS[k]; if(q.de&&!isDE()) return false; if(q.ai&&!hasAI()) return false; if(k==="week"&&!hasLessons) return false; return true; });
   const must=["quiz","cards"].filter(k=>pool.includes(k)); const rest=pool.filter(k=>!must.includes(k)).sort(()=>rnd()-.5);
   const pick=[...must,...rest].slice(0,5);
   S.quests={key,list:pick.map(k=>({k,p:0,n:QUESTS[k].n,done:false})),bonus:false}; save(); return S.quests;
@@ -1123,7 +1180,7 @@ function home(){
     <div class="kpi"><span class="k-ic">🎯</span><b>${acc==null?"–":acc+"%"}</b><small>Trefferquote</small></div>
   </section>
   <button class="big" data-go="study:__learn"><span>Neue Wörter lernen</span><span class="big-n">${Math.min(todayN,10)} / 10</span></button>
-  ${window.claude?`<button class="big2" data-go="tutor">KI-Stunde nehmen</button>`:next?`<button class="big2" data-go="lesson:${next.n}">Weiter mit Lektion ${next.n}</button>`:`<button class="big2" data-go="learn">Kurs erstellen</button>`}
+  ${hasAI()?`<button class="big2" data-go="tutor">KI-Stunde nehmen</button>`:next?`<button class="big2" data-go="lesson:${next.n}">Weiter mit Lektion ${next.n}</button>`:`<button class="big2" data-go="learn">Kurs erstellen</button>`}
   ${weekChart(P.goal)}
   ${questCard()}
   <div class="segbar" role="tablist" aria-label="Bereiche">${[["topics","Themen"],["grammar","Grammatik"],["practice","Üben"]].map(([k,t])=>`<button role="tab" data-htab="${k}" aria-selected="${k===tab}">${t}</button>`).join("")}</div>
@@ -1311,7 +1368,7 @@ function words(){
 }
 
 async function setupGen(){
-  const sample = window.claude ? await window.claude.use("sample").catch(()=>null) : null;
+  const sample = await getSample();
   const sec=$("#gen"); if(!sec) return;
   if(!sample){ sec.hidden=true; return; }
   $("#gBtn").onclick=async()=>{
@@ -1617,7 +1674,7 @@ function rules(){
   return base+tag+` Act as a speaking examiner for a ${L} ${lv} exam (for German: Goethe-Zertifikat). Ask ONE exam question at a time about everyday topics (presentation topics, opinions, planning together). After each answer, give brief feedback (what was good, one correction) and then ask the next question.`;
 }
 async function tutor(){
-  const sample = window.claude ? await window.claude.use("sample").catch(()=>null) : null;
+  const sample = await getSample();
   h(`<section class="card"><span class="label">KI-Tutor</span><h1>Üben mit deinem Tutor</h1>
    <div class="row"><label for="tLang" class="label">Sprache</label><select id="tLang" style="width:auto">${langOptions(S.tutorLang)}</select>
    <label for="tLvl" class="label">Niveau</label><select id="tLvl" style="width:auto">${["A1","A2","B1","B2","C1"].map(k=>`<option ${k===S.level?"selected":""}>${k}</option>`).join("")}</select></div>
