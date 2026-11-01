@@ -194,11 +194,28 @@ export async function handleAI(request, env, ctx) {
   return json({ text, truncated: choice.finish_reason === "length" });
 }
 
+// Browser protection rules for every page. No Content-Security-Policy yet: the app relies on
+// inline scripts, YouTube, Firebase and font hosts, and a strict policy would need testing first.
+const SECURITY_HEADERS = {
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "SAMEORIGIN",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  // Speaking practice uses the microphone; nothing else needs device access.
+  "Permissions-Policy": "camera=(), geolocation=(), microphone=(self)",
+};
+
+function withSecurityHeaders(res) {
+  const out = new Response(res.body, res);
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) out.headers.set(k, v);
+  return out;
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
-    if (url.pathname === "/api/ai") return handleAI(request, env, ctx);
-    if (env.ASSETS) return env.ASSETS.fetch(request);
+    if (url.pathname === "/api/ai") return withSecurityHeaders(await handleAI(request, env, ctx));
+    if (env.ASSETS) return withSecurityHeaders(await env.ASSETS.fetch(request));
     return new Response("Not found", { status: 404 });
   },
 };

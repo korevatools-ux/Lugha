@@ -1428,5 +1428,6 @@ body{background:var(--color-ink);color:var(--color-text);font-family:var(--font-
   try{ LughaScene.mountIridescentScene(canvas, THREE, {reducedMotion:reduce, onReady:function(){canvas.style.opacity=1; svg.style.opacity=0;}}); }catch(e){ console.warn(e); }
 })();
 </script>
-<script src="/detectives/detectives.js" defer></script></body>
+<script src="/detectives/detectives.js" defer></script><script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));</script>
+</body>
 </html>

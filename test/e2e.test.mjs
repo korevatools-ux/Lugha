@@ -122,6 +122,13 @@ await check("everything else is still served by the site's static files", async 
   const r = await worker.fetch(new Request(SITE + "/app/"), env2, {});
   assert.equal(await r.text(), "static:/app/");
 });
+await check("pages carry browser protection headers", async () => {
+  const env2 = { ...env, ASSETS: { fetch: async () => new Response("page") } };
+  const r = await worker.fetch(new Request(SITE + "/app/"), env2, {});
+  assert.equal(r.headers.get("X-Frame-Options"), "SAMEORIGIN");
+  assert.equal(r.headers.get("X-Content-Type-Options"), "nosniff");
+  assert.match(r.headers.get("Permissions-Policy"), /microphone=\(self\)/);
+});
 
 for (const [s, n] of results) console.log(`${s}  ${n}`);
 const failed = results.filter(([s]) => s === "FAIL").length;

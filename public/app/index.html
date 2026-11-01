@@ -2240,4 +2240,5 @@ paintStats();
 if(canAccounts()){ if(S.account) fbInit(); else if(!S.welcomed) setTimeout(()=>welcome("start"),60); }
 go(!S.course?"course":["learn","words","listen","tutor","accents","speak","mail","settings"].includes(location.hash.slice(1))?location.hash.slice(1):"home");
 </script>
+<script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));</script>
 </body></html>
