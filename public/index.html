@@ -1,0 +1,1432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lugha — Speak beyond borders</title>
+<meta name="google-site-verification" content="a6RI2el9Dsn2yWnZTMmtmlQlUQaF20OqCFPtgNghTEk" />
+<meta name="description" content="Lugha is a free language-learning app: 256 languages from all 195 countries, levels A1 to B2, native voices, an AI tutor and Goethe/ÖSD-style exam practice.">
+<meta name="theme-color" content="#2a2a2c">
+<link rel="canonical" href="https://learnwithlughaa.korevatools.workers.dev/">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lugha">
+<meta property="og:title" content="Lugha — Speak beyond borders">
+<meta property="og:description" content="Lugha is a free language-learning app: 256 languages from all 195 countries, levels A1 to B2, native voices, an AI tutor and Goethe/ÖSD-style exam practice.">
+<meta property="og:url" content="https://learnwithlughaa.korevatools.workers.dev/">
+<meta property="og:image" content="https://learnwithlughaa.korevatools.workers.dev/opengraph-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://learnwithlughaa.korevatools.workers.dev/opengraph-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Lugha","url":"https://learnwithlughaa.korevatools.workers.dev/","applicationCategory":"EducationalApplication","operatingSystem":"Web","description":"Lugha is a free language-learning app: 256 languages from all 195 countries, levels A1 to B2, native voices, an AI tutor and Goethe/ÖSD-style exam practice.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Kanit:wght@300;400;500&display=swap">
+<style>
+/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
+@layer properties;
+@layer theme, base, components, utilities;
+@layer theme {
+  :root, :host {
+    --font-sans: var(--font-kanit), "Kanit", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    --spacing: 8px;
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
+    --font-weight-light: 300;
+    --font-weight-medium: 500;
+    --blur-sm: 8px;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --default-font-family: var(--font-sans);
+    --default-mono-font-family: var(--font-mono);
+    --color-ink: #2a2a2c;
+    --color-panel: #343437;
+    --color-line: rgb(255 255 255 / 0.08);
+    --color-text: #f4f4f5;
+    --color-muted: #b4b4bb;
+    --color-faint: #6e6e76;
+    --color-lavender: #a78bfa;
+    --font-display: var(--font-archivo), "Archivo Black", "Arial Black", Impact, sans-serif;
+    --text-eyebrow: 0.75rem;
+    --text-eyebrow--letter-spacing: 0.2em;
+    --text-eyebrow--line-height: 1.6;
+    --text-body: 1rem;
+    --text-body--line-height: 1.6;
+    --text-lead: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+    --text-lead--line-height: 1.5;
+    --text-card: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+    --text-card--line-height: 1.15;
+    --text-heading: clamp(2.75rem, 1rem + 9vw, 8.5rem);
+    --text-heading--line-height: 0.9;
+    --text-display: clamp(3.25rem, 0.5rem + 14.2vw, 15.5rem);
+    --text-display--line-height: 0.84;
+    --radius-card: 24px;
+    --radius-panel: 32px;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+  html, :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(--default-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+  abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  code, kbd, samp, pre {
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+  :-moz-focusring:where(:not(iframe)) {
+    outline: auto;
+  }
+  progress {
+    vertical-align: baseline;
+  }
+  summary {
+    display: list-item;
+  }
+  ol, ul, menu {
+    list-style: none;
+  }
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+  button, input, select, optgroup, textarea, ::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+  :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+  :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+  ::file-selector-button {
+    margin-inline-end: 4px;
+  }
+  ::placeholder {
+    opacity: 1;
+  }
+  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentcolor;
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
+  }
+  textarea {
+    resize: vertical;
+  }
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+  ::-webkit-calendar-picker-indicator {
+    line-height: 1;
+  }
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+  button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-selector-button {
+    appearance: button;
+  }
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+  }
+  [hidden]:where(:not([hidden="until-found"])) {
+    display: none !important;
+  }
+}
+@layer utilities {
+  .pointer-events-none {
+    pointer-events: none;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  .absolute {
+    position: absolute;
+  }
+  .relative {
+    position: relative;
+  }
+  .inset-0 {
+    inset: 0px;
+  }
+  .inset-\[-12\%\] {
+    inset: -12%;
+  }
+  .inset-x-0 {
+    inset-inline: 0px;
+  }
+  .top-\[12\%\] {
+    top: 12%;
+  }
+  .top-\[18\%\] {
+    top: 18%;
+  }
+  .top-\[22\%\] {
+    top: 22%;
+  }
+  .top-\[26\%\] {
+    top: 26%;
+  }
+  .right-\[-10\%\] {
+    right: -10%;
+  }
+  .right-\[12\%\] {
+    right: 12%;
+  }
+  .right-\[30\%\] {
+    right: 30%;
+  }
+  .bottom-0 {
+    bottom: 0px;
+  }
+  .bottom-2 {
+    bottom: calc(var(--spacing) * 2);
+  }
+  .left-3 {
+    left: calc(var(--spacing) * 3);
+  }
+  .left-\[14\%\] {
+    left: 14%;
+  }
+  .z-0 {
+    z-index: 0;
+  }
+  .z-10 {
+    z-index: 10;
+  }
+  .z-20 {
+    z-index: 20;
+  }
+  .z-30 {
+    z-index: 30;
+  }
+  .row-span-2 {
+    grid-row: span 2 / span 2;
+  }
+  .mx-auto {
+    margin-inline: auto;
+  }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
+  }
+  .mt-5 {
+    margin-top: calc(var(--spacing) * 5);
+  }
+  .mt-8 {
+    margin-top: calc(var(--spacing) * 8);
+  }
+  .mt-\[4px\] {
+    margin-top: 4px;
+  }
+  .mr-1 {
+    margin-right: var(--spacing);
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
+  .block {
+    display: block;
+  }
+  .flex {
+    display: flex;
+  }
+  .grid {
+    display: grid;
+  }
+  .hidden {
+    display: none;
+  }
+  .inline-block {
+    display: inline-block;
+  }
+  .inline-flex {
+    display: inline-flex;
+  }
+  .aspect-\[4\/3\] {
+    aspect-ratio: 4/3;
+  }
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+  .size-1 {
+    width: var(--spacing);
+    height: var(--spacing);
+  }
+  .size-\[124\%\] {
+    width: 124%;
+    height: 124%;
+  }
+  .h-1\/2 {
+    height: calc(1 / 2 * 100%);
+  }
+  .h-auto {
+    height: auto;
+  }
+  .h-full {
+    height: 100%;
+  }
+  .min-h-5 {
+    min-height: calc(var(--spacing) * 5);
+  }
+  .min-h-6 {
+    min-height: calc(var(--spacing) * 6);
+  }
+  .min-h-7 {
+    min-height: calc(var(--spacing) * 7);
+  }
+  .w-\[34\%\] {
+    width: 34%;
+  }
+  .w-\[62vw\] {
+    width: 62vw;
+  }
+  .w-full {
+    width: 100%;
+  }
+  .max-w-\[44ch\] {
+    max-width: 44ch;
+  }
+  .max-w-\[60ch\] {
+    max-width: 60ch;
+  }
+  .max-w-\[760px\] {
+    max-width: 760px;
+  }
+  .max-w-\[960px\] {
+    max-width: 960px;
+  }
+  .max-w-\[1600px\] {
+    max-width: 1600px;
+  }
+  .min-w-0 {
+    min-width: 0px;
+  }
+  .flex-1 {
+    flex: 1;
+  }
+  .shrink-0 {
+    flex-shrink: 0;
+  }
+  .\[transform\:translateZ\(12px\)\] {
+    transform: translateZ(12px);
+  }
+  .\[transform\:translateZ\(18px\)\] {
+    transform: translateZ(18px);
+  }
+  .\[transform\:translateZ\(20px\)\] {
+    transform: translateZ(20px);
+  }
+  .\[transform\:translateZ\(24px\)\] {
+    transform: translateZ(24px);
+  }
+  .\[transform\:translateZ\(30px\)\] {
+    transform: translateZ(30px);
+  }
+  .\[transform\:translateZ\(36px\)\] {
+    transform: translateZ(36px);
+  }
+  .\[transform\:translateZ\(40px\)\] {
+    transform: translateZ(40px);
+  }
+  .\[transform\:translateZ\(50px\)\] {
+    transform: translateZ(50px);
+  }
+  .animate-float {
+    animation: float 9s ease-in-out infinite;
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .grid-cols-\[72px_minmax\(0\,1fr\)\] {
+    grid-template-columns: 72px minmax(0,1fr);
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .gap-1 {
+    gap: var(--spacing);
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
+  }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
+  }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
+  .gap-x-3 {
+    column-gap: calc(var(--spacing) * 3);
+  }
+  .gap-y-1 {
+    row-gap: var(--spacing);
+  }
+  .self-start {
+    align-self: flex-start;
+  }
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .overflow-visible {
+    overflow: visible;
+  }
+  .overflow-x-clip {
+    overflow-x: clip;
+  }
+  .rounded-\[inherit\] {
+    border-radius: inherit;
+  }
+  .rounded-card {
+    border-radius: var(--radius-card);
+  }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
+  }
+  .rounded-panel {
+    border-radius: var(--radius-panel);
+  }
+  .rounded-t-panel {
+    border-top-left-radius: var(--radius-panel);
+    border-top-right-radius: var(--radius-panel);
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .border-t {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 1px;
+  }
+  .border-lavender\/70 {
+    border-color: color-mix(in srgb, #a78bfa 70%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-lavender) 70%, transparent);
+    }
+  }
+  .border-line {
+    border-color: var(--color-line);
+  }
+  .bg-ink\/80 {
+    background-color: color-mix(in srgb, #2a2a2c 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-ink) 80%, transparent);
+    }
+  }
+  .bg-lavender {
+    background-color: var(--color-lavender);
+  }
+  .bg-panel {
+    background-color: var(--color-panel);
+  }
+  .bg-panel\/60 {
+    background-color: color-mix(in srgb, #343437 60%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-panel) 60%, transparent);
+    }
+  }
+  .bg-gradient-to-t {
+    --tw-gradient-position: to top in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+  .bg-\[radial-gradient\(120\%_90\%_at_20\%_10\%\,\#a78bfa_0\%\,\#6d28d9_38\%\,\#312e81_75\%\,\#1e1b4b_100\%\)\] {
+    background-image: radial-gradient(120% 90% at 20% 10%,#a78bfa 0%,#6d28d9 38%,#312e81 75%,#1e1b4b 100%);
+  }
+  .bg-\[radial-gradient\(120\%_90\%_at_50\%_0\%\,\#f0abfc_0\%\,\#a855f7_35\%\,\#4338ca_72\%\,\#1e1b4b_100\%\)\] {
+    background-image: radial-gradient(120% 90% at 50% 0%,#f0abfc 0%,#a855f7 35%,#4338ca 72%,#1e1b4b 100%);
+  }
+  .bg-\[radial-gradient\(120\%_90\%_at_80\%_15\%\,\#818cf8_0\%\,\#4f46e5_40\%\,\#3b0764_80\%\,\#1e1b4b_100\%\)\] {
+    background-image: radial-gradient(120% 90% at 80% 15%,#818cf8 0%,#4f46e5 40%,#3b0764 80%,#1e1b4b 100%);
+  }
+  .bg-\[radial-gradient\(circle_at_30\%_28\%\,\#ffffff_0\%\,\#e9d5ff_14\%\,\#a78bfa_42\%\,\#4c1d95_85\%\)\] {
+    background-image: radial-gradient(circle at 30% 28%,#ffffff 0%,#e9d5ff 14%,#a78bfa 42%,#4c1d95 85%);
+  }
+  .from-panel {
+    --tw-gradient-from: var(--color-panel);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-transparent {
+    --tw-gradient-to: transparent;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .py-1 {
+    padding-block: var(--spacing);
+  }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
+  .py-6 {
+    padding-block: calc(var(--spacing) * 6);
+  }
+  .py-8 {
+    padding-block: calc(var(--spacing) * 8);
+  }
+  .py-\[4px\] {
+    padding-block: 4px;
+  }
+  .pt-2 {
+    padding-top: calc(var(--spacing) * 2);
+  }
+  .pt-4 {
+    padding-top: calc(var(--spacing) * 4);
+  }
+  .pt-8 {
+    padding-top: calc(var(--spacing) * 8);
+  }
+  .pb-4 {
+    padding-bottom: calc(var(--spacing) * 4);
+  }
+  .pb-5 {
+    padding-bottom: calc(var(--spacing) * 5);
+  }
+  .pb-\[0\.06em\] {
+    padding-bottom: 0.06em;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+  .text-eyebrow {
+    font-size: var(--text-eyebrow);
+    line-height: var(--tw-leading, var(--text-eyebrow--line-height));
+    letter-spacing: var(--tw-tracking, var(--text-eyebrow--letter-spacing));
+  }
+  .text-body {
+    font-size: var(--text-body);
+    line-height: var(--tw-leading, var(--text-body--line-height));
+  }
+  .text-card {
+    font-size: var(--text-card);
+    line-height: var(--tw-leading, var(--text-card--line-height));
+  }
+  .text-display {
+    font-size: var(--text-display);
+    line-height: var(--tw-leading, var(--text-display--line-height));
+  }
+  .text-heading {
+    font-size: var(--text-heading);
+    line-height: var(--tw-leading, var(--text-heading--line-height));
+  }
+  .text-lead {
+    font-size: var(--text-lead);
+    line-height: var(--tw-leading, var(--text-lead--line-height));
+  }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .text-\[clamp\(2\.25rem\,10\.2vw\,16rem\)\] {
+    font-size: clamp(2.25rem, 10.2vw, 16rem);
+  }
+  .text-\[clamp\(3\.5rem\,2rem\+6vw\,8rem\)\] {
+    font-size: clamp(3.5rem, 2rem + 6vw, 8rem);
+  }
+  .text-\[clamp\(4rem\,3rem\+4vw\,7rem\)\] {
+    font-size: clamp(4rem, 3rem + 4vw, 7rem);
+  }
+  .leading-\[0\.85\] {
+    --tw-leading: 0.85;
+    line-height: 0.85;
+  }
+  .leading-none {
+    --tw-leading: 1;
+    line-height: 1;
+  }
+  .font-light {
+    --tw-font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-light);
+  }
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+  }
+  .tracking-\[-0\.02em\] {
+    --tw-tracking: -0.02em;
+    letter-spacing: -0.02em;
+  }
+  .tracking-\[-0\.03em\] {
+    --tw-tracking: -0.03em;
+    letter-spacing: -0.03em;
+  }
+  .tracking-\[0\.01em\] {
+    --tw-tracking: 0.01em;
+    letter-spacing: 0.01em;
+  }
+  .tracking-\[0\.04em\] {
+    --tw-tracking: 0.04em;
+    letter-spacing: 0.04em;
+  }
+  .tracking-\[0\.18em\] {
+    --tw-tracking: 0.18em;
+    letter-spacing: 0.18em;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .break-all {
+    word-break: break-all;
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
+  }
+  .text-faint {
+    color: var(--color-faint);
+  }
+  .text-lavender {
+    color: var(--color-lavender);
+  }
+  .text-muted {
+    color: var(--color-muted);
+  }
+  .text-text {
+    color: var(--color-text);
+  }
+  .text-text\/90 {
+    color: color-mix(in srgb, #f4f4f5 90%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-text) 90%, transparent);
+    }
+  }
+  .text-text\/\[0\.07\] {
+    color: color-mix(in srgb, #f4f4f5 7.000000000000001%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-text) 7.000000000000001%, transparent);
+    }
+  }
+  .uppercase {
+    text-transform: uppercase;
+  }
+  .underline {
+    text-decoration-line: underline;
+  }
+  .decoration-lavender\/50 {
+    text-decoration-color: color-mix(in srgb, #a78bfa 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      text-decoration-color: color-mix(in oklab, var(--color-lavender) 50%, transparent);
+    }
+  }
+  .underline-offset-4 {
+    text-underline-offset: 4px;
+  }
+  .opacity-0 {
+    opacity: 0%;
+  }
+  .opacity-90 {
+    opacity: 90%;
+  }
+  .opacity-100 {
+    opacity: 100%;
+  }
+  .mix-blend-screen {
+    mix-blend-mode: screen;
+  }
+  .shadow-\[0_24px_48px_-8px_rgb\(30_27_75\/0\.8\)\,inset_-12px_-16px_32px_rgb\(30_27_75\/0\.55\)\] {
+    --tw-shadow: 0 24px 48px -8px var(--tw-shadow-color, rgb(30 27 75/0.8)), inset -12px -16px 32px var(--tw-shadow-color, rgb(30 27 75/0.55));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-glow {
+    --tw-shadow: 0 0 0 1px var(--tw-shadow-color, rgb(167 139 250 / 0.15)), 0 0 24px -4px var(--tw-shadow-color, rgb(167 139 250 / 0.45));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-glow-strong {
+    --tw-shadow: 0 0 0 1px var(--tw-shadow-color, rgb(167 139 250 / 0.35)), 0 0 40px -2px var(--tw-shadow-color, rgb(167 139 250 / 0.75));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-panel {
+    --tw-shadow: 0 1px 0 0 var(--tw-shadow-color, rgb(255 255 255 / 0.04)) inset, 0 24px 48px -16px var(--tw-shadow-color, rgb(0 0 0 / 0.6));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .backdrop-blur-sm {
+    --tw-backdrop-blur: blur(var(--blur-sm));
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .transition-\[border-color\,box-shadow\,transform\] {
+    transition-property: border-color,box-shadow,transform;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-\[border-color\,box-shadow\] {
+    transition-property: border-color,box-shadow;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-\[box-shadow\,border-color\,transform\,background-color\] {
+    transition-property: box-shadow,border-color,transform,background-color;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-\[box-shadow\,border-color\,transform\] {
+    transition-property: box-shadow,border-color,transform;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-colors {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-opacity {
+    transition-property: opacity;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-transform {
+    transition-property: transform, translate, scale, rotate;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
+  .duration-300 {
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+  }
+  .duration-700 {
+    --tw-duration: 700ms;
+    transition-duration: 700ms;
+  }
+  .ease-out-expo {
+    --tw-ease: var(--ease-out-expo);
+    transition-timing-function: var(--ease-out-expo);
+  }
+  .select-all {
+    -webkit-user-select: all;
+    user-select: all;
+  }
+  .select-none {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .\[-webkit-text-stroke\:1px_rgb\(167_139_250\/0\.22\)\] {
+    -webkit-text-stroke: 1px rgb(167 139 250/0.22);
+  }
+  .\[text-shadow\:0_0_0\.3em_rgb\(167_139_250\/0\.12\)\] {
+    text-shadow: 0 0 0.3em rgb(167 139 250/0.12);
+  }
+  .\[transform-style\:preserve-3d\] {
+    transform-style: preserve-3d;
+  }
+  .text-shadow-extrude {
+    text-shadow: 0 0.008em 0 var(--tw-text-shadow-color, #4a4560), 0 0.016em 0 var(--tw-text-shadow-color, #403b56), 0 0.024em 0 var(--tw-text-shadow-color, #37324c), 0 0.032em 0 var(--tw-text-shadow-color, #2f2a43), 0 0.04em 0 var(--tw-text-shadow-color, #28233a), 0 0.048em 0 var(--tw-text-shadow-color, #211d31), 0 0.09em 0.12em var(--tw-text-shadow-color, rgb(0 0 0 / 0.55)), 0 0 0.4em var(--tw-text-shadow-color, rgb(167 139 250 / 0.14));
+  }
+  @media (hover: hover) {
+    .group-hover\/tilt\:opacity-100:is(:where(.group\/tilt):hover *) {
+      opacity: 100%;
+    }
+    .hover\:border-lavender:hover {
+      border-color: var(--color-lavender);
+    }
+    .hover\:border-lavender\/40:hover {
+      border-color: color-mix(in srgb, #a78bfa 40%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:border-lavender\/40:hover {
+        border-color: color-mix(in oklab, var(--color-lavender) 40%, transparent);
+      }
+    }
+    .hover\:border-lavender\/50:hover {
+      border-color: color-mix(in srgb, #a78bfa 50%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:border-lavender\/50:hover {
+        border-color: color-mix(in oklab, var(--color-lavender) 50%, transparent);
+      }
+    }
+    .hover\:border-lavender\/60:hover {
+      border-color: color-mix(in srgb, #a78bfa 60%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:border-lavender\/60:hover {
+        border-color: color-mix(in oklab, var(--color-lavender) 60%, transparent);
+      }
+    }
+    .hover\:bg-panel:hover {
+      background-color: var(--color-panel);
+    }
+    .hover\:text-text:hover {
+      color: var(--color-text);
+    }
+    .hover\:shadow-glow:hover {
+      --tw-shadow: 0 0 0 1px var(--tw-shadow-color, rgb(167 139 250 / 0.15)), 0 0 24px -4px var(--tw-shadow-color, rgb(167 139 250 / 0.45));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+    .hover\:shadow-glow-strong:hover {
+      --tw-shadow: 0 0 0 1px var(--tw-shadow-color, rgb(167 139 250 / 0.35)), 0 0 40px -2px var(--tw-shadow-color, rgb(167 139 250 / 0.75));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+    .hover\:shadow-lift:hover {
+      --tw-shadow: 0 1px 0 0 var(--tw-shadow-color, rgb(255 255 255 / 0.06)) inset, 0 32px 64px -16px var(--tw-shadow-color, rgb(0 0 0 / 0.7)), 0 0 32px -8px var(--tw-shadow-color, rgb(167 139 250 / 0.35));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus-visible\:shadow-glow-strong:focus-visible {
+    --tw-shadow: 0 0 0 1px var(--tw-shadow-color, rgb(167 139 250 / 0.35)), 0 0 40px -2px var(--tw-shadow-color, rgb(167 139 250 / 0.75));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @media (hover: hover) {
+      .motion-safe\:group-hover\:translate-x-\[3px\]:is(:where(.group):hover *) {
+        --tw-translate-x: 3px;
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
+      .motion-safe\:hover\:-translate-y-1:hover {
+        --tw-translate-y: calc(var(--spacing) * -1);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
+      .motion-safe\:hover\:-translate-y-\[2px\]:hover {
+        --tw-translate-y: calc(2px * -1);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
+      .motion-safe\:hover\:-translate-y-px:hover {
+        --tw-translate-y: -1px;
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
+    }
+  }
+  @media (width >= 40rem) {
+    .sm\:right-\[-2\%\] {
+      right: -2%;
+    }
+    .sm\:col-span-2 {
+      grid-column: span 2 / span 2;
+    }
+    .sm\:block {
+      display: block;
+    }
+    .sm\:w-\[48vw\] {
+      width: 48vw;
+    }
+    .sm\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .sm\:grid-cols-\[auto_1fr\] {
+      grid-template-columns: auto 1fr;
+    }
+    .sm\:flex-row {
+      flex-direction: row;
+    }
+    .sm\:items-end {
+      align-items: flex-end;
+    }
+    .sm\:justify-between {
+      justify-content: space-between;
+    }
+    .sm\:gap-2 {
+      gap: calc(var(--spacing) * 2);
+    }
+    .sm\:gap-x-2 {
+      column-gap: calc(var(--spacing) * 2);
+    }
+    .sm\:self-auto {
+      align-self: auto;
+    }
+    .sm\:px-6 {
+      padding-inline: calc(var(--spacing) * 6);
+    }
+  }
+  @media (width >= 48rem) {
+    .md\:top-\[14\%\] {
+      top: 14%;
+    }
+    .md\:right-\[6\%\] {
+      right: 6%;
+    }
+    .md\:row-span-1 {
+      grid-row: span 1 / span 1;
+    }
+    .md\:mt-6 {
+      margin-top: calc(var(--spacing) * 6);
+    }
+    .md\:mt-7 {
+      margin-top: calc(var(--spacing) * 7);
+    }
+    .md\:mt-12 {
+      margin-top: calc(var(--spacing) * 12);
+    }
+    .md\:mr-2 {
+      margin-right: calc(var(--spacing) * 2);
+    }
+    .md\:block {
+      display: block;
+    }
+    .md\:min-h-8 {
+      min-height: calc(var(--spacing) * 8);
+    }
+    .md\:min-h-\[calc\(100svh-80px\)\] {
+      min-height: calc(100svh - 80px);
+    }
+    .md\:w-\[40vw\] {
+      width: 40vw;
+    }
+    .md\:grid-cols-\[minmax\(160px\,220px\)_minmax\(0\,1fr\)_minmax\(0\,1\.1fr\)\] {
+      grid-template-columns: minmax(160px,220px) minmax(0,1fr) minmax(0,1.1fr);
+    }
+    .md\:flex-row {
+      flex-direction: row;
+    }
+    .md\:items-center {
+      align-items: center;
+    }
+    .md\:justify-between {
+      justify-content: space-between;
+    }
+    .md\:gap-3 {
+      gap: calc(var(--spacing) * 3);
+    }
+    .md\:gap-4 {
+      gap: calc(var(--spacing) * 4);
+    }
+    .md\:gap-5 {
+      gap: calc(var(--spacing) * 5);
+    }
+    .md\:gap-x-5 {
+      column-gap: calc(var(--spacing) * 5);
+    }
+    .md\:px-4 {
+      padding-inline: calc(var(--spacing) * 4);
+    }
+    .md\:px-5 {
+      padding-inline: calc(var(--spacing) * 5);
+    }
+    .md\:py-4 {
+      padding-block: calc(var(--spacing) * 4);
+    }
+    .md\:py-10 {
+      padding-block: calc(var(--spacing) * 10);
+    }
+    .md\:py-12 {
+      padding-block: calc(var(--spacing) * 12);
+    }
+    .md\:pb-5 {
+      padding-bottom: calc(var(--spacing) * 5);
+    }
+    .md\:pb-6 {
+      padding-bottom: calc(var(--spacing) * 6);
+    }
+    .md\:text-lead {
+      font-size: var(--text-lead);
+      line-height: var(--tw-leading, var(--text-lead--line-height));
+    }
+  }
+  @media (width >= 64rem) {
+    .lg\:col-span-1 {
+      grid-column: span 1 / span 1;
+    }
+    .lg\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .lg\:gap-4 {
+      gap: calc(var(--spacing) * 4);
+    }
+  }
+}
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--tw-leading, var(--text-body--line-height));
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: rgb(167 139 250 / 0.35);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-lavender);
+    outline-offset: 3px;
+    border-radius: 9999px;
+  }
+}
+@keyframes float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) rotate(-3deg);
+  }
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-gradient-position {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-from {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-via {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-to {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-stops {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-via-stops {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-from-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+@property --tw-gradient-via-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+@property --tw-gradient-to-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-backdrop-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-text-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-text-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
+      --tw-gradient-position: initial;
+      --tw-gradient-from: #0000;
+      --tw-gradient-via: #0000;
+      --tw-gradient-to: #0000;
+      --tw-gradient-stops: initial;
+      --tw-gradient-via-stops: initial;
+      --tw-gradient-from-position: 0%;
+      --tw-gradient-via-position: 50%;
+      --tw-gradient-to-position: 100%;
+      --tw-leading: initial;
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-backdrop-blur: initial;
+      --tw-backdrop-brightness: initial;
+      --tw-backdrop-contrast: initial;
+      --tw-backdrop-grayscale: initial;
+      --tw-backdrop-hue-rotate: initial;
+      --tw-backdrop-invert: initial;
+      --tw-backdrop-opacity: initial;
+      --tw-backdrop-saturate: initial;
+      --tw-backdrop-sepia: initial;
+      --tw-duration: initial;
+      --tw-ease: initial;
+      --tw-text-shadow-color: initial;
+      --tw-text-shadow-alpha: 100%;
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
+    }
+  }
+}
+
+/* Preview stand-ins for the Framer Motion animations */
+:root{color-scheme:dark;background:#2a2a2c}
+body{background:var(--color-ink);color:var(--color-text);font-family:var(--font-sans)}
+@keyframes pv-up{from{transform:translateY(110%)}to{transform:none}}
+@keyframes pv-fade{from{opacity:0}to{opacity:1}}
+@keyframes pv-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.pv-line{animation:pv-up .9s var(--ease-out-expo) var(--d,0s) both}
+.pv-fade{animation:pv-fade .6s var(--ease-out-expo) var(--d,0s) both}
+[data-reveal].pv-in{animation:pv-rise .6s var(--ease-out-expo) var(--d,0s) both}
+@media (prefers-reduced-motion:reduce){.pv-line,.pv-fade,[data-reveal].pv-in{animation:none}}
+:root{--font-archivo:"Archivo Black";--font-kanit:"Kanit"}
+.skip{position:absolute;left:-9999px;top:8px;z-index:50;padding:8px 16px;border-radius:999px;background:#343437;color:#f4f4f5}.skip:focus{left:8px}
+</style>
+<style>
+.hero-cta{display:flex;align-items:center;gap:18px;align-self:flex-start}
+@media (min-width:640px){.hero-cta{align-self:auto}}
+.mascot-hero{position:relative;flex:none;width:clamp(170px,22vw,300px);animation:mh-float 5s ease-in-out infinite}
+.mascot-hero img{display:block;width:100%;height:auto;filter:drop-shadow(0 20px 30px rgba(0,0,0,.45))}
+.mascot-hero span{position:absolute;left:58%;top:-6%;white-space:nowrap;background:#f4f4f2;color:#1b1c1f;font-family:Kanit,sans-serif;font-weight:500;font-size:clamp(12px,1.2vw,16px);padding:.3em .75em;border-radius:999px 999px 999px 4px;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+@keyframes mh-float{50%{transform:translateY(-8px) rotate(-2deg)}}
+@media (prefers-reduced-motion:reduce){.mascot-hero{animation:none}}
+</style><style>
+.hero-copy{display:flex;flex-direction:column;gap:10px}
+.hero-tag{margin:0;font-family:Kanit,sans-serif;font-weight:400;font-size:clamp(18px,2vw,26px);color:#f4f4f5}.hero-tag span{color:#b6d65a}
+.hero-cta{flex-wrap:wrap}@media(min-width:900px){.hero-cta{flex-wrap:nowrap}.hero-cta .mascot-hero{width:clamp(170px,18vw,260px)}}
+.tutor-btn{display:inline-flex;align-items:center;gap:6px;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid rgba(182,214,90,.6);color:#e4f2b8;font-family:Kanit,sans-serif;font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:13px;text-decoration:none;transition:background .2s,transform .2s}
+.tutor-btn:hover{background:rgba(182,214,90,.12);transform:translateY(-1px)}
+.det-sec{max-width:1600px;margin:0 auto;padding:64px 16px}@media(min-width:768px){.det-sec{padding:96px 40px}}
+.det-eyebrow{margin:0 0 8px;font-family:Kanit,sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#a78bfa}
+.det-h{margin:0;font-family:"Archivo Black",sans-serif;font-size:clamp(34px,6vw,84px);line-height:.95;text-transform:uppercase;letter-spacing:-.02em;color:#f4f4f5;text-shadow:0 2px 0 #4a4560,0 4px 0 #37324c,0 14px 24px rgba(0,0,0,.45)}
+.det-lead{max-width:60ch;margin:18px 0 0;color:#b4b4bb;font-family:Kanit,sans-serif;font-size:18px;line-height:1.5}
+.det-grid{display:grid;gap:16px;margin-top:32px}@media(min-width:768px){.det-grid{grid-template-columns:1fr 1fr}}
+.det-card{display:grid;grid-template-columns:140px 1fr;gap:18px;align-items:center;padding:20px;border-radius:28px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(160deg,rgba(167,139,250,.10),rgba(42,42,44,.6));box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.det-art{display:grid;place-items:end center;height:200px;border-radius:20px;background:radial-gradient(70% 60% at 50% 70%,rgba(182,214,90,.25),transparent 70%)}
+.det-art img{max-height:190px;width:auto;filter:drop-shadow(0 14px 18px rgba(0,0,0,.45));transition:transform .3s}.det-card:hover .det-art img{transform:translateY(-6px) rotate(-2deg)}
+.det-body h3{margin:0;font-family:"Archivo Black",sans-serif;font-size:24px;text-transform:uppercase;color:#f4f4f5}
+.det-body p{margin:8px 0 14px;color:#b4b4bb;font-family:Kanit,sans-serif;font-size:16px;line-height:1.5}
+.det-hear{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(167,139,250,.6);background:rgba(30,30,34,.8);color:#f4f4f5;font-family:Kanit,sans-serif;font-size:14px;cursor:pointer}
+.det-hear:hover{border-color:#a78bfa;box-shadow:0 0 24px rgba(167,139,250,.35)}
+@media(max-width:480px){.det-card{grid-template-columns:1fr;text-align:center}.det-art{height:180px}}
+.det-poses{list-style:none;margin:28px 0 0;padding:0;display:flex;gap:10px;overflow-x:auto;scrollbar-width:none}
+.det-poses li{flex:none;width:110px;height:150px;display:grid;place-items:end center;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+.det-poses img{max-height:140px;width:auto}
+.fit-grid{display:grid;gap:16px;margin-top:32px}@media(min-width:900px){.fit-grid{grid-template-columns:1fr 1.3fr 1fr}}
+.fit{display:flex;flex-direction:column;gap:8px;padding:24px;border-radius:28px;border:1px solid rgba(255,255,255,.08);background:rgba(36,36,40,.7)}
+.fit-main{border-color:rgba(182,214,90,.45);background:linear-gradient(160deg,rgba(182,214,90,.14),rgba(36,36,40,.8))}
+.fit-k{font-family:Kanit,sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#a78bfa}.fit-main .fit-k{color:#b6d65a}
+.fit h3{margin:0;font-family:"Archivo Black",sans-serif;font-size:24px;text-transform:uppercase;color:#f4f4f5}
+.fit p{margin:0;flex:1;color:#b4b4bb;font-family:Kanit,sans-serif;font-size:16px;line-height:1.5}
+.fit-a{align-self:flex-start;margin-top:8px;color:#e4e4e7;font-family:Kanit,sans-serif;font-size:14px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.6);padding:6px 0}
+.fit-cta{border:0;background:#b6d65a;color:#1b2208;padding:12px 20px;border-radius:999px;font-weight:600}
+</style></head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="relative z-30 mx-auto flex w-full max-w-[1600px] items-center justify-between gap-2 px-2 py-3 md:px-5"><a href="#top" class="font-display text-lg uppercase tracking-[0.04em] text-text" aria-label="Lugha, back to top" style="display:inline-flex;align-items:center;gap:10px"><img src="/mascot.webp" alt="" width="36" height="36" style="width:36px;height:36px;border-radius:50%;box-shadow:0 0 0 2px #b6d65a">Lugha<span aria-hidden="true" class="text-lavender">.</span></a><nav aria-label="Main"><ul class="flex items-center gap-2 md:gap-4"><li class=""><a href="#about" class="inline-flex min-h-5 items-center text-eyebrow uppercase text-muted transition-colors duration-200 hover:text-text">About</a></li><li class="hidden sm:block"><a href="#features" class="inline-flex min-h-5 items-center text-eyebrow uppercase text-muted transition-colors duration-200 hover:text-text">Features</a></li><li class="hidden md:block"><a href="#how" class="inline-flex min-h-5 items-center text-eyebrow uppercase text-muted transition-colors duration-200 hover:text-text">How it works</a></li><li class="hidden md:block"><a href="#examples" class="inline-flex min-h-5 items-center text-eyebrow uppercase text-muted transition-colors duration-200 hover:text-text">Examples</a></li><li><a href="/app/" aria-label="Open the Lugha app" class="group inline-flex items-center justify-center gap-1 rounded-full border border-lavender/70 bg-ink/80 font-sans font-medium uppercase text-text backdrop-blur-sm transition-[box-shadow,border-color,transform,background-color] duration-300 ease-out-expo hover:border-lavender hover:bg-panel hover:shadow-glow-strong focus-visible:shadow-glow-strong motion-safe:hover:-translate-y-px shadow-glow min-h-5 px-2 text-eyebrow ">Open app<span aria-hidden="true" class="transition-transform duration-300 ease-out-expo motion-safe:group-hover:translate-x-[3px]">→</span></a></li></ul></nav></header><main id="main"><section id="top" aria-labelledby="hero-title" class="relative mx-auto flex w-full max-w-[1600px] flex-col justify-between gap-6 overflow-x-clip px-2 pb-5 pt-2 md:min-h-[calc(100svh-80px)] md:gap-5 md:px-5 md:pb-6"><div class="relative"><h1 id="hero-title" class="relative z-0 font-display text-display uppercase tracking-[-0.03em] text-text text-shadow-extrude"><span class="block overflow-hidden pb-[0.06em]"><span class="block pv-line" style="--d:0.1s">Speak</span></span><span class="block overflow-hidden pb-[0.06em]"><span class="block pv-line" style="--d:0.22s">beyond</span></span><span class="block overflow-hidden pb-[0.06em]"><span class="block pv-line" style="--d:0.33999999999999997s">borders</span></span></h1><div class="pointer-events-none absolute right-[-10%] top-[22%] z-10 w-[62vw] max-w-[760px] opacity-90 mix-blend-screen sm:right-[-2%] sm:w-[48vw] md:right-[6%] md:top-[14%] md:w-[40vw] pv-fade" style="--d:0.35s"><div aria-hidden="true" class="relative aspect-square " data-hero3d=""><div aria-hidden="true" class="absolute inset-0 transition-opacity duration-700 opacity-100"><svg viewBox="0 0 600 600" class="h-auto w-full animate-float overflow-visible"><defs><linearGradient id="iri-base" x1="0.1" y1="0.05" x2="0.9" y2="0.95"><stop offset="0" stop-color="#c4b5fd"></stop><stop offset="0.28" stop-color="#7c3aed"></stop><stop offset="0.55" stop-color="#3b82f6"></stop><stop offset="0.8" stop-color="#ec4899"></stop><stop offset="1" stop-color="#f9a8d4"></stop></linearGradient><radialGradient id="iri-blue" cx="0.25" cy="0.7" r="0.45"><stop offset="0" stop-color="#38bdf8" stop-opacity="0.9"></stop><stop offset="1" stop-color="#38bdf8" stop-opacity="0"></stop></radialGradient><radialGradient id="iri-pink" cx="0.8" cy="0.35" r="0.5"><stop offset="0" stop-color="#f472b6" stop-opacity="0.85"></stop><stop offset="1" stop-color="#f472b6" stop-opacity="0"></stop></radialGradient><radialGradient id="iri-shade" cx="0.42" cy="0.36" r="0.72"><stop offset="0.5" stop-color="#1e1b4b" stop-opacity="0"></stop><stop offset="1" stop-color="#140f33" stop-opacity="0.85"></stop></radialGradient><radialGradient id="iri-gloss" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffffff" stop-opacity="0.95"></stop><stop offset="1" stop-color="#ffffff" stop-opacity="0"></stop></radialGradient><linearGradient id="iri-rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.7"></stop><stop offset="0.5" stop-color="#a78bfa" stop-opacity="0.1"></stop><stop offset="1" stop-color="#f9a8d4" stop-opacity="0.6"></stop></linearGradient><filter id="iri-soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="18"></feGaussianBlur></filter><filter id="iri-blur-sm" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"></feGaussianBlur></filter><filter id="iri-glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="36"></feGaussianBlur></filter><clipPath id="iri-clip"><path d="M332 52c96-6 196 58 226 160 28 96-6 170-62 236-62 74-170 120-268 92C126 512 50 432 44 330 38 232 92 160 160 110 212 72 268 56 332 52Z"></path></clipPath></defs><path d="M332 52c96-6 196 58 226 160 28 96-6 170-62 236-62 74-170 120-268 92C126 512 50 432 44 330 38 232 92 160 160 110 212 72 268 56 332 52Z" fill="#8b5cf6" opacity="0.45" filter="url(#iri-glow)"></path><g clip-path="url(#iri-clip)"><rect width="600" height="600" fill="url(#iri-base)"></rect><rect width="600" height="600" fill="url(#iri-blue)"></rect><rect width="600" height="600" fill="url(#iri-pink)"></rect><path d="M-20 420C120 300 260 520 420 360S560 250 640 300" stroke="#a5f3fc" stroke-opacity="0.55" stroke-width="46" fill="none" filter="url(#iri-soft)"></path><path d="M-20 230C110 120 250 300 380 190S560 110 640 170" stroke="#fbcfe8" stroke-opacity="0.5" stroke-width="34" fill="none" filter="url(#iri-soft)"></path><path d="M60 560C200 470 330 560 600 470" stroke="#1e1b4b" stroke-opacity="0.5" stroke-width="80" fill="none" filter="url(#iri-soft)"></path><rect width="600" height="600" fill="url(#iri-shade)"></rect></g><path d="M332 52c96-6 196 58 226 160 28 96-6 170-62 236-62 74-170 120-268 92C126 512 50 432 44 330 38 232 92 160 160 110 212 72 268 56 332 52Z" fill="none" stroke="url(#iri-rim)" stroke-width="4"></path><ellipse cx="230" cy="150" rx="96" ry="40" transform="rotate(-20 230 150)" fill="url(#iri-gloss)" filter="url(#iri-blur-sm)"></ellipse><ellipse cx="205" cy="140" rx="28" ry="11" transform="rotate(-20 205 140)" fill="#ffffff" opacity="0.9"></ellipse><ellipse cx="455" cy="430" rx="40" ry="16" transform="rotate(-38 455 430)" fill="#ffffff" opacity="0.25" filter="url(#iri-blur-sm)"></ellipse></svg></div><canvas class="absolute inset-[-12%] size-[124%] transition-opacity duration-700 opacity-0"></canvas></div></div></div><div class="relative z-20 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between pv-fade" style="--d:0.55s"><div class="hero-copy"><p class="hero-tag">AI language learning. <span>Real-world confidence.</span></p><p class="max-w-[44ch] text-eyebrow uppercase text-muted">Lugha means “language” in Swahili. 256 languages from all 195 countries, levels A1 to B2, real exam practice. Free, on any phone.</p></div><div class="hero-cta"><div class="mascot-hero" aria-hidden="true"><img src="/detectives/pair.webp" alt="" width="900" height="590"><span>Hallo! 👋</span></div><a href="/app/" class="group inline-flex items-center justify-center gap-1 rounded-full border border-lavender/70 bg-ink/80 font-sans font-medium uppercase text-text backdrop-blur-sm transition-[box-shadow,border-color,transform,background-color] duration-300 ease-out-expo hover:border-lavender hover:bg-panel hover:shadow-glow-strong focus-visible:shadow-glow-strong motion-safe:hover:-translate-y-px shadow-glow-strong min-h-7 px-4 text-sm tracking-[0.18em]">Start learning free<span aria-hidden="true" class="transition-transform duration-300 ease-out-expo motion-safe:group-hover:translate-x-[3px]">→</span></a><a href="https://claude.ai/artifact/XvYvrr5MvocMSUsmaPzK2C" target="_blank" rel="noopener" class="tutor-btn">✨ Talk to the AI tutor</a></div></div></section><section id="detectives" aria-labelledby="det-title" class="det-sec"><p class="det-eyebrow">Your guides</p><h2 id="det-title" class="det-h">Meet the detectives</h2>
+<p class="det-lead">Two friendly language detectives walk with you through every lesson. Every new word is a clue, and they help you crack it, in your language and at your pace.</p>
+<div class="det-grid">
+ <article class="det-card"><div class="det-art"><img src="/detectives/m-laptop.webp" alt="The male detective with a laptop" loading="lazy" width="187" height="320"></div><div class="det-body"><h3>The Word Detective</h3><p>Calm, clever and always prepared. He plans your lessons, checks your answers and explains grammar in simple words.</p><button type="button" class="det-hear" data-ld-talk="m">🔊 Hear his voice</button></div></article>
+ <article class="det-card"><div class="det-art"><img src="/detectives/f-magnifier.webp" alt="The female detective with a magnifying glass" loading="lazy" width="217" height="320"></div><div class="det-body"><h3>The Clue Finder</h3><p>Curious and cheerful. She spots the words you keep forgetting, brings them back as flashcards and celebrates every streak.</p><button type="button" class="det-hear" data-ld-talk="f">🔊 Hear her voice</button></div></article>
+</div>
+<ul class="det-poses" aria-label="Their poses"><li><img src="/detectives/f-wave.webp" alt="" loading="lazy"></li><li><img src="/detectives/m-point.webp" alt="" loading="lazy"></li><li><img src="/detectives/f-wink.webp" alt="" loading="lazy"></li><li><img src="/detectives/m-think.webp" alt="" loading="lazy"></li><li><img src="/detectives/m-wink.webp" alt="" loading="lazy"></li><li><img src="/detectives/f-front.webp" alt="" loading="lazy"></li><li><img src="/detectives/m-front.webp" alt="" loading="lazy"></li></ul>
+</section><section id="about" aria-labelledby="about-title" class="mx-auto w-full max-w-[1600px] px-2 py-8 md:px-5 md:py-12"><div data-reveal="" style="--d:0s"><div class="group/tilt relative [transform-style:preserve-3d] rounded-panel border border-line bg-panel px-3 py-6 shadow-panel sm:px-6 md:py-10" data-tilt="3"><div class="mx-auto flex max-w-[960px] flex-col items-center gap-4 text-center [transform:translateZ(40px)]"><div class="text-center"><p class="mb-2 text-eyebrow uppercase text-lavender">About Lugha</p><h2 id="about-title" class="font-display text-heading uppercase tracking-[-0.02em] text-balance text-text text-shadow-extrude">What it does</h2></div><p class="max-w-[60ch] text-lead font-light text-muted">Lugha is a free language course for people who can’t pay for one. Short daily lessons, flashcards that remember what you forget, real voices and accents, and practice in the same format as the Goethe and ÖSD exams: Lesen, Hören, Schreiben, Sprechen.</p><a href="#features" class="group inline-flex items-center justify-center gap-1 rounded-full border border-lavender/70 bg-ink/80 font-sans font-medium uppercase text-text backdrop-blur-sm transition-[box-shadow,border-color,transform,background-color] duration-300 ease-out-expo hover:border-lavender hover:bg-panel hover:shadow-glow-strong focus-visible:shadow-glow-strong motion-safe:hover:-translate-y-px shadow-glow min-h-6 px-3 text-eyebrow ">See the features<span aria-hidden="true" class="transition-transform duration-300 ease-out-expo motion-safe:group-hover:translate-x-[3px]">→</span></a></div><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></div></div></section><section id="features" aria-labelledby="features-title" class="mx-auto w-full max-w-[1600px] px-2 py-8 md:px-5 md:py-12"><div data-reveal="" style="--d:0s"><div class=""><p class="mb-2 text-eyebrow uppercase text-lavender">Everything in one free app</p><h2 id="features-title" class="font-display text-heading uppercase tracking-[-0.02em] text-balance text-text text-shadow-extrude">Features</h2></div></div><div data-reveal="" style="--d:0.1s"><ul class="mt-5 flex flex-wrap gap-1 sm:gap-2 md:mt-6 md:gap-3" aria-label="Lugha features"><li class="group/tilt relative [transform-style:preserve-3d] inline-flex min-h-6 items-center rounded-full border border-line bg-panel px-2 py-1 text-body text-text md:text-lead shadow-panel transition-[border-color,box-shadow,transform] duration-300 ease-out-expo hover:border-lavender/60 hover:shadow-glow motion-safe:hover:-translate-y-[2px] md:min-h-8 md:px-4" data-tilt="14"><span aria-hidden="true" class="mr-1 inline-block size-1 rounded-full bg-lavender shadow-glow md:mr-2"></span><span class="[transform:translateZ(18px)]">256 languages · 195 countries</span><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></li><li class="group/tilt relative [transform-style:preserve-3d] inline-flex min-h-6 items-center rounded-full border border-line bg-panel px-2 py-1 text-body text-text md:text-lead shadow-panel transition-[border-color,box-shadow,transform] duration-300 ease-out-expo hover:border-lavender/60 hover:shadow-glow motion-safe:hover:-translate-y-[2px] md:min-h-8 md:px-4" data-tilt="14"><span aria-hidden="true" class="mr-1 inline-block size-1 rounded-full bg-lavender shadow-glow md:mr-2"></span><span class="[transform:translateZ(18px)]">Levels A1 → B2</span><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></li><li class="group/tilt relative [transform-style:preserve-3d] inline-flex min-h-6 items-center rounded-full border border-line bg-panel px-2 py-1 text-body text-text md:text-lead shadow-panel transition-[border-color,box-shadow,transform] duration-300 ease-out-expo hover:border-lavender/60 hover:shadow-glow motion-safe:hover:-translate-y-[2px] md:min-h-8 md:px-4" data-tilt="14"><span aria-hidden="true" class="mr-1 inline-block size-1 rounded-full bg-lavender shadow-glow md:mr-2"></span><span class="[transform:translateZ(18px)]">Native voices &amp; accents</span><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></li><li class="group/tilt relative [transform-style:preserve-3d] inline-flex min-h-6 items-center rounded-full border border-line bg-panel px-2 py-1 text-body text-text md:text-lead shadow-panel transition-[border-color,box-shadow,transform] duration-300 ease-out-expo hover:border-lavender/60 hover:shadow-glow motion-safe:hover:-translate-y-[2px] md:min-h-8 md:px-4" data-tilt="14"><span aria-hidden="true" class="mr-1 inline-block size-1 rounded-full bg-lavender shadow-glow md:mr-2"></span><span class="[transform:translateZ(18px)]">Smart flashcards</span><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></li><li class="group/tilt relative [transform-style:preserve-3d] inline-flex min-h-6 items-center rounded-full border border-line bg-panel px-2 py-1 text-body text-text md:text-lead shadow-panel transition-[border-color,box-shadow,transform] duration-300 ease-out-expo hover:border-lavender/60 hover:shadow-glow motion-safe:hover:-translate-y-[2px] md:min-h-8 md:px-4" data-tilt="14"><span aria-hidden="true" class="mr-1 inline-block size-1 rounded-full bg-lavender shadow-glow md:mr-2"></span><span class="[transform:translateZ(18px)]">Listening &amp; dictation</span><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></li><li class="group/tilt relative [transform-style:preserve-3d] inline-flex min-h-6 items-center rounded-full border border-line bg-panel px-2 py-1 text-body text-text md:text-lead shadow-panel transition-[border-color,box-shadow,transform] duration-300 ease-out-expo hover:border-lavender/60 hover:shadow-glow motion-safe:hover:-translate-y-[2px] md:min-h-8 md:px-4" data-tilt="14"><span aria-hidden="true" class="mr-1 inline-block size-1 rounded-full bg-lavender shadow-glow md:mr-2"></span><span class="[transform:translateZ(18px)]">AI tutor</span><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></li><li class="group/tilt relative [transform-style:preserve-3d] inline-flex min-h-6 items-center rounded-full border border-line bg-panel px-2 py-1 text-body text-text md:text-lead shadow-panel transition-[border-color,box-shadow,transform] duration-300 ease-out-expo hover:border-lavender/60 hover:shadow-glow motion-safe:hover:-translate-y-[2px] md:min-h-8 md:px-4" data-tilt="14"><span aria-hidden="true" class="mr-1 inline-block size-1 rounded-full bg-lavender shadow-glow md:mr-2"></span><span class="[transform:translateZ(18px)]">Exam-style email scoring</span><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></li><li class="group/tilt relative [transform-style:preserve-3d] inline-flex min-h-6 items-center rounded-full border border-line bg-panel px-2 py-1 text-body text-text md:text-lead shadow-panel transition-[border-color,box-shadow,transform] duration-300 ease-out-expo hover:border-lavender/60 hover:shadow-glow motion-safe:hover:-translate-y-[2px] md:min-h-8 md:px-4" data-tilt="14"><span aria-hidden="true" class="mr-1 inline-block size-1 rounded-full bg-lavender shadow-glow md:mr-2"></span><span class="[transform:translateZ(18px)]">Speaking partner</span><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></li></ul></div></section><section id="how" aria-labelledby="how-title" class="mx-auto w-full max-w-[1600px] px-2 py-8 md:px-5 md:py-12"><div data-reveal="" style="--d:0s"><div class=""><p class="mb-2 text-eyebrow uppercase text-lavender">Four steps, ten minutes a day</p><h2 id="how-title" class="font-display text-heading uppercase tracking-[-0.02em] text-balance text-text text-shadow-extrude">How it works</h2></div></div><ol class="mt-5 flex flex-col gap-2 md:mt-7 md:gap-3"><li><div data-reveal="" style="--d:0s"><div class="group/tilt relative [transform-style:preserve-3d] grid grid-cols-[72px_minmax(0,1fr)] items-center gap-x-3 gap-y-1 rounded-card border border-line bg-panel/60 px-3 py-3 shadow-panel transition-[border-color,box-shadow] duration-300 ease-out-expo hover:border-lavender/40 hover:shadow-lift md:grid-cols-[minmax(160px,220px)_minmax(0,1fr)_minmax(0,1.1fr)] md:gap-x-5 md:px-5 md:py-4" data-tilt="4"><span aria-hidden="true" class="row-span-2 font-display text-[clamp(3.5rem,2rem+6vw,8rem)] leading-none text-faint text-shadow-extrude [transform:translateZ(30px)] md:row-span-1">01</span><h3 class="min-w-0 font-display text-card uppercase tracking-[0.01em] text-text [transform:translateZ(20px)]"><span class="sr-only">Step 1: </span>Pick a language</h3><p class="min-w-0 text-body font-light text-muted md:text-lead">Pick your country or any of 256 languages, from Deutsch and Kiswahili to chiShona, Yorùbá, Quechua and Tok Pisin, and start at your level.</p><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></div></div></li><li><div data-reveal="" style="--d:0.08s"><div class="group/tilt relative [transform-style:preserve-3d] grid grid-cols-[72px_minmax(0,1fr)] items-center gap-x-3 gap-y-1 rounded-card border border-line bg-panel/60 px-3 py-3 shadow-panel transition-[border-color,box-shadow] duration-300 ease-out-expo hover:border-lavender/40 hover:shadow-lift md:grid-cols-[minmax(160px,220px)_minmax(0,1fr)_minmax(0,1.1fr)] md:gap-x-5 md:px-5 md:py-4" data-tilt="4"><span aria-hidden="true" class="row-span-2 font-display text-[clamp(3.5rem,2rem+6vw,8rem)] leading-none text-faint text-shadow-extrude [transform:translateZ(30px)] md:row-span-1">02</span><h3 class="min-w-0 font-display text-card uppercase tracking-[0.01em] text-text [transform:translateZ(20px)]"><span class="sr-only">Step 2: </span>Learn ten minutes a day</h3><p class="min-w-0 text-body font-light text-muted md:text-lead">A short lesson, a few flashcards and one dictation sentence. Your streak and progress save on your phone.</p><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></div></div></li><li><div data-reveal="" style="--d:0.16s"><div class="group/tilt relative [transform-style:preserve-3d] grid grid-cols-[72px_minmax(0,1fr)] items-center gap-x-3 gap-y-1 rounded-card border border-line bg-panel/60 px-3 py-3 shadow-panel transition-[border-color,box-shadow] duration-300 ease-out-expo hover:border-lavender/40 hover:shadow-lift md:grid-cols-[minmax(160px,220px)_minmax(0,1fr)_minmax(0,1.1fr)] md:gap-x-5 md:px-5 md:py-4" data-tilt="4"><span aria-hidden="true" class="row-span-2 font-display text-[clamp(3.5rem,2rem+6vw,8rem)] leading-none text-faint text-shadow-extrude [transform:translateZ(30px)] md:row-span-1">03</span><h3 class="min-w-0 font-display text-card uppercase tracking-[0.01em] text-text [transform:translateZ(20px)]"><span class="sr-only">Step 3: </span>Speak and write</h3><p class="min-w-0 text-body font-light text-muted md:text-lead">Plan a trip with a speaking partner, write emails and get feedback on every mistake, in simple English.</p><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></div></div></li><li><div data-reveal="" style="--d:0.24s"><div class="group/tilt relative [transform-style:preserve-3d] grid grid-cols-[72px_minmax(0,1fr)] items-center gap-x-3 gap-y-1 rounded-card border border-line bg-panel/60 px-3 py-3 shadow-panel transition-[border-color,box-shadow] duration-300 ease-out-expo hover:border-lavender/40 hover:shadow-lift md:grid-cols-[minmax(160px,220px)_minmax(0,1fr)_minmax(0,1.1fr)] md:gap-x-5 md:px-5 md:py-4" data-tilt="4"><span aria-hidden="true" class="row-span-2 font-display text-[clamp(3.5rem,2rem+6vw,8rem)] leading-none text-faint text-shadow-extrude [transform:translateZ(30px)] md:row-span-1">04</span><h3 class="min-w-0 font-display text-card uppercase tracking-[0.01em] text-text [transform:translateZ(20px)]"><span class="sr-only">Step 4: </span>Test like the real exam</h3><p class="min-w-0 text-body font-light text-muted md:text-lead">Weekly tests and email scoring that follow the official B1 criteria, so exam day feels familiar.</p><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></div></div></li></ol></section><section id="examples" aria-labelledby="examples-title" class="mx-auto w-full max-w-[1600px] px-2 py-8 md:px-5 md:py-12"><div data-reveal="" style="--d:0s"><div class=""><p class="mb-2 text-eyebrow uppercase text-lavender">Start with one of these</p><h2 id="examples-title" class="font-display text-heading uppercase tracking-[-0.02em] text-balance text-text text-shadow-extrude">Examples</h2></div></div><ul class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 md:mt-7 lg:grid-cols-3 lg:gap-4"><li class=""><div class="h-full" data-reveal="" style="--d:0s"><article class="group/tilt relative [transform-style:preserve-3d] flex h-full flex-col rounded-panel border border-line bg-panel shadow-panel transition-[box-shadow,border-color,transform] duration-300 ease-out-expo hover:border-lavender/50 hover:shadow-lift motion-safe:hover:-translate-y-1" data-tilt="9"><div aria-hidden="true" class="relative aspect-[4/3] overflow-hidden rounded-t-panel bg-[radial-gradient(120%_90%_at_20%_10%,#a78bfa_0%,#6d28d9_38%,#312e81_75%,#1e1b4b_100%)] [transform:translateZ(12px)]"><div class="absolute right-[12%] top-[18%] aspect-square w-[34%] rounded-full bg-[radial-gradient(circle_at_30%_28%,#ffffff_0%,#e9d5ff_14%,#a78bfa_42%,#4c1d95_85%)] shadow-[0_24px_48px_-8px_rgb(30_27_75/0.8),inset_-12px_-16px_32px_rgb(30_27_75/0.55)] [transform:translateZ(50px)]"></div><div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-panel to-transparent"></div><span class="absolute bottom-2 left-3 font-display text-[clamp(4rem,3rem+4vw,7rem)] leading-none text-text/90 text-shadow-extrude [transform:translateZ(36px)]">01</span></div><div class="flex flex-1 items-center justify-between gap-2 px-3 py-3 [transform:translateZ(24px)]"><div class="min-w-0"><h3 class="font-display text-card uppercase tracking-[0.01em] text-text">Deutsch B1</h3><p class="mt-[4px] text-eyebrow uppercase text-muted">Goethe &amp; ÖSD exam prep</p></div><a href="/app/" aria-label="Open Deutsch B1: Goethe &amp; ÖSD exam prep" class="group inline-flex items-center justify-center gap-1 rounded-full border border-lavender/70 bg-ink/80 font-sans font-medium uppercase text-text backdrop-blur-sm transition-[box-shadow,border-color,transform,background-color] duration-300 ease-out-expo hover:border-lavender hover:bg-panel hover:shadow-glow-strong focus-visible:shadow-glow-strong motion-safe:hover:-translate-y-px shadow-glow min-h-5 px-2 text-eyebrow shrink-0">Open<span aria-hidden="true" class="transition-transform duration-300 ease-out-expo motion-safe:group-hover:translate-x-[3px]">→</span></a></div><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></article></div></li><li class=""><div class="h-full" data-reveal="" style="--d:0.1s"><article class="group/tilt relative [transform-style:preserve-3d] flex h-full flex-col rounded-panel border border-line bg-panel shadow-panel transition-[box-shadow,border-color,transform] duration-300 ease-out-expo hover:border-lavender/50 hover:shadow-lift motion-safe:hover:-translate-y-1" data-tilt="9"><div aria-hidden="true" class="relative aspect-[4/3] overflow-hidden rounded-t-panel bg-[radial-gradient(120%_90%_at_80%_15%,#818cf8_0%,#4f46e5_40%,#3b0764_80%,#1e1b4b_100%)] [transform:translateZ(12px)]"><div class="absolute left-[14%] top-[26%] aspect-square w-[34%] rounded-full bg-[radial-gradient(circle_at_30%_28%,#ffffff_0%,#e9d5ff_14%,#a78bfa_42%,#4c1d95_85%)] shadow-[0_24px_48px_-8px_rgb(30_27_75/0.8),inset_-12px_-16px_32px_rgb(30_27_75/0.55)] [transform:translateZ(50px)]"></div><div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-panel to-transparent"></div><span class="absolute bottom-2 left-3 font-display text-[clamp(4rem,3rem+4vw,7rem)] leading-none text-text/90 text-shadow-extrude [transform:translateZ(36px)]">02</span></div><div class="flex flex-1 items-center justify-between gap-2 px-3 py-3 [transform:translateZ(24px)]"><div class="min-w-0"><h3 class="font-display text-card uppercase tracking-[0.01em] text-text">Kiswahili</h3><p class="mt-[4px] text-eyebrow uppercase text-muted">From zero · A1</p></div><a href="/app/" aria-label="Open Kiswahili: From zero · A1" class="group inline-flex items-center justify-center gap-1 rounded-full border border-lavender/70 bg-ink/80 font-sans font-medium uppercase text-text backdrop-blur-sm transition-[box-shadow,border-color,transform,background-color] duration-300 ease-out-expo hover:border-lavender hover:bg-panel hover:shadow-glow-strong focus-visible:shadow-glow-strong motion-safe:hover:-translate-y-px shadow-glow min-h-5 px-2 text-eyebrow shrink-0">Open<span aria-hidden="true" class="transition-transform duration-300 ease-out-expo motion-safe:group-hover:translate-x-[3px]">→</span></a></div><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></article></div></li><li class="sm:col-span-2 lg:col-span-1"><div class="h-full" data-reveal="" style="--d:0.2s"><article class="group/tilt relative [transform-style:preserve-3d] flex h-full flex-col rounded-panel border border-line bg-panel shadow-panel transition-[box-shadow,border-color,transform] duration-300 ease-out-expo hover:border-lavender/50 hover:shadow-lift motion-safe:hover:-translate-y-1" data-tilt="9"><div aria-hidden="true" class="relative aspect-[4/3] overflow-hidden rounded-t-panel bg-[radial-gradient(120%_90%_at_50%_0%,#f0abfc_0%,#a855f7_35%,#4338ca_72%,#1e1b4b_100%)] [transform:translateZ(12px)]"><div class="absolute right-[30%] top-[12%] aspect-square w-[34%] rounded-full bg-[radial-gradient(circle_at_30%_28%,#ffffff_0%,#e9d5ff_14%,#a78bfa_42%,#4c1d95_85%)] shadow-[0_24px_48px_-8px_rgb(30_27_75/0.8),inset_-12px_-16px_32px_rgb(30_27_75/0.55)] [transform:translateZ(50px)]"></div><div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-panel to-transparent"></div><span class="absolute bottom-2 left-3 font-display text-[clamp(4rem,3rem+4vw,7rem)] leading-none text-text/90 text-shadow-extrude [transform:translateZ(36px)]">03</span></div><div class="flex flex-1 items-center justify-between gap-2 px-3 py-3 [transform:translateZ(24px)]"><div class="min-w-0"><h3 class="font-display text-card uppercase tracking-[0.01em] text-text">Learn by country</h3><p class="mt-[4px] text-eyebrow uppercase text-muted">195 countries · 256 languages</p></div><a href="/app/" aria-label="Open Learn by country: 195 countries · 256 languages" class="group inline-flex items-center justify-center gap-1 rounded-full border border-lavender/70 bg-ink/80 font-sans font-medium uppercase text-text backdrop-blur-sm transition-[box-shadow,border-color,transform,background-color] duration-300 ease-out-expo hover:border-lavender hover:bg-panel hover:shadow-glow-strong focus-visible:shadow-glow-strong motion-safe:hover:-translate-y-px shadow-glow min-h-5 px-2 text-eyebrow shrink-0">Open<span aria-hidden="true" class="transition-transform duration-300 ease-out-expo motion-safe:group-hover:translate-x-[3px]">→</span></a></div><span aria-hidden="true" data-sheen="" class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100"></span></article></div></li></ul></section></main><section id="connect" aria-labelledby="connect-title" class="det-sec"><p class="det-eyebrow">How Lugha fits together</p><h2 id="connect-title" class="det-h">One place to learn</h2>
+<div class="fit-grid">
+ <article class="fit"><span class="fit-k">Website</span><h3>lugha · home</h3><p>Everything about Lugha: features, the detectives and examples. Share it with friends.</p><a href="#top" class="fit-a">Back to top ↑</a></article>
+ <article class="fit fit-main"><span class="fit-k">Your app · /app</span><h3>Learn every day</h3><p>Lessons from A1 to B2, flashcards, listening, real voices, daily quests and exam practice. Sign in to keep your progress on every phone.</p><a href="/app/" class="fit-a fit-cta">Open the app →</a></article>
+ <article class="fit"><span class="fit-k">AI tutor</span><h3>Talk and get feedback</h3><p>Chat with an AI tutor, write emails and get every mistake explained. Opens Lugha inside Claude.</p><a href="https://claude.ai/artifact/XvYvrr5MvocMSUsmaPzK2C" target="_blank" rel="noopener" class="fit-a">Open the AI tutor ↗</a></article>
+</div></section><footer class="relative mx-auto mt-8 w-full max-w-[1600px] overflow-x-clip px-2 pb-4 pt-8 md:mt-12 md:px-5 md:pb-5"><div data-reveal="" style="--d:0s"><p aria-hidden="true" class="select-none whitespace-nowrap font-display text-[clamp(2.25rem,10.2vw,16rem)] uppercase leading-[0.85] tracking-[-0.03em] text-text/[0.07] [-webkit-text-stroke:1px_rgb(167_139_250/0.22)] [text-shadow:0_0_0.3em_rgb(167_139_250/0.12)]">Let’s build</p></div><div class="mt-5 flex flex-col gap-4 border-t border-line pt-4 md:mt-6 md:flex-row md:items-center md:justify-between"><div class="flex flex-col gap-2"><h2 class="font-display text-card uppercase text-text"><img src="/mascot.webp" alt="" width="44" height="44" style="width:44px;height:44px;border-radius:50%;vertical-align:middle;margin-right:10px;box-shadow:0 0 0 2px #b6d65a">Have an idea or a language to add?</h2><div class="flex flex-wrap items-center gap-2"><a href="mailto:korevatools@gmail.com" class="group inline-flex items-center justify-center gap-1 rounded-full border border-lavender/70 bg-ink/80 font-sans font-medium uppercase text-text backdrop-blur-sm transition-[box-shadow,border-color,transform,background-color] duration-300 ease-out-expo hover:border-lavender hover:bg-panel hover:shadow-glow-strong focus-visible:shadow-glow-strong motion-safe:hover:-translate-y-px shadow-glow-strong min-h-6 px-3 text-eyebrow ">Get in touch<span aria-hidden="true" class="transition-transform duration-300 ease-out-expo motion-safe:group-hover:translate-x-[3px]">→</span></a><a href="/app/" class="group inline-flex items-center justify-center gap-1 rounded-full border border-lavender/70 bg-ink/80 font-sans font-medium uppercase text-text backdrop-blur-sm transition-[box-shadow,border-color,transform,background-color] duration-300 ease-out-expo hover:border-lavender hover:bg-panel hover:shadow-glow-strong focus-visible:shadow-glow-strong motion-safe:hover:-translate-y-px shadow-glow min-h-6 px-3 text-eyebrow ">Open Lugha<span aria-hidden="true" class="transition-transform duration-300 ease-out-expo motion-safe:group-hover:translate-x-[3px]">→</span></a></div><dl class="grid gap-1 text-eyebrow text-muted sm:grid-cols-[auto_1fr] sm:gap-x-2"><dt class="uppercase text-lavender">Email</dt><dd class="min-w-0 select-all break-all">korevatools@gmail.com</dd><dt class="uppercase text-lavender">Web</dt><dd class="min-w-0 break-all"><a href="https://learnwithlughaa.korevatools.workers.dev" class="inline-block py-[4px] underline decoration-lavender/50 underline-offset-4 hover:text-text">learnwithlughaa.korevatools.workers.dev</a></dd><dt class="uppercase text-lavender">AI version</dt><dd class="min-w-0"><a href="https://claude.ai/artifact/XvYvrr5MvocMSUsmaPzK2C" class="inline-block py-[4px] underline decoration-lavender/50 underline-offset-4 hover:text-text">Lugha with AI tutor (on Claude)</a></dd></dl></div><nav aria-label="Footer"><ul class="flex flex-wrap gap-x-3 gap-y-1"><li><a href="#about" class="inline-flex min-h-5 items-center text-eyebrow uppercase text-muted transition-colors duration-200 hover:text-text">About</a></li><li><a href="#features" class="inline-flex min-h-5 items-center text-eyebrow uppercase text-muted transition-colors duration-200 hover:text-text">Features</a></li><li><a href="#how" class="inline-flex min-h-5 items-center text-eyebrow uppercase text-muted transition-colors duration-200 hover:text-text">How it works</a></li><li><a href="#examples" class="inline-flex min-h-5 items-center text-eyebrow uppercase text-muted transition-colors duration-200 hover:text-text">Examples</a></li></ul></nav></div><ul aria-label="Lugha in numbers" class="mt-4 flex flex-wrap gap-1"><li class="rounded-full border border-line px-2 py-[4px] text-eyebrow uppercase text-muted">256 languages</li><li class="rounded-full border border-line px-2 py-[4px] text-eyebrow uppercase text-muted">195 countries</li><li class="rounded-full border border-line px-2 py-[4px] text-eyebrow uppercase text-muted">Levels A1–B2</li><li class="rounded-full border border-line px-2 py-[4px] text-eyebrow uppercase text-muted">Goethe &amp; ÖSD exam formats</li><li class="rounded-full border border-line px-2 py-[4px] text-eyebrow uppercase text-muted">Free to use</li></ul><p class="mt-3 text-eyebrow uppercase text-muted">© 2026 Lugha. Free for everyone.</p></footer><script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+<script>"use strict";var LughaScene=(()=>{var b=Object.defineProperty;var W=Object.getOwnPropertyDescriptor;var q=Object.getOwnPropertyNames;var B=Object.prototype.hasOwnProperty;var D=(n,e)=>{for(var o in e)b(n,o,{get:e[o],enumerable:!0})},j=(n,e,o,i)=>{if(e&&typeof e=="object"||typeof e=="function")for(let r of q(e))!B.call(n,r)&&r!==o&&b(n,r,{get:()=>e[r],enumerable:!(i=W(e,r))||i.enumerable});return n};var K=n=>j(b({},"__esModule",{value:!0}),n);var Y={};D(Y,{hasWebGL:()=>X,mountIridescentScene:()=>V});function V(n,e,o){var G;let i=new e.WebGLRenderer({canvas:n,alpha:!0,antialias:!0,powerPreference:"high-performance"});i.setPixelRatio(Math.min(window.devicePixelRatio||1,2)),i.outputColorSpace=e.SRGBColorSpace,i.toneMapping=e.ACESFilmicToneMapping,i.toneMappingExposure=1.05;let r=new e.Scene,a=new e.PerspectiveCamera(32,1,.1,100);a.position.set(0,0,7.2);let g=new e.PMREMGenerator(i),u=new e.Scene;u.background=new e.Color("#1a1530");let c=(t,m,z,F,A)=>{let w=new e.Mesh(new e.PlaneGeometry(A[0],A[1]),new e.MeshBasicMaterial({color:new e.Color(t).multiplyScalar(m),side:e.DoubleSide}));w.position.set(...z),w.rotation.set(...F),u.add(w)};c("#ffffff",3.2,[0,6,0],[Math.PI/2,0,0],[8,3]),c("#a78bfa",2.4,[-6,1,0],[0,Math.PI/2,0],[6,8]),c("#60a5fa",2.2,[6,-1,1],[0,-Math.PI/2,0],[6,8]),c("#f472b6",2.4,[0,-2,-6],[0,0,0],[10,5]),c("#7c3aed",1.6,[0,-6,0],[-Math.PI/2,0,0],[10,10]);let M=g.fromScene(u,.04);r.environment=M.texture;let v=new e.TorusKnotGeometry(1.05,.38,360,64,2,3),y=new e.MeshPhysicalMaterial({color:new e.Color("#8b5cf6"),metalness:.25,roughness:.12,clearcoat:1,clearcoatRoughness:.06,iridescence:1,iridescenceIOR:1.35,iridescenceThicknessRange:[180,820],sheen:.6,sheenColor:new e.Color("#f9a8d4"),envMapIntensity:1.4}),s=new e.Mesh(v,y);s.rotation.set(.5,-.4,.2),r.add(s);let x=new e.DirectionalLight("#ffffff",1.6);x.position.set(-3,4,5),r.add(x,new e.AmbientLight("#a78bfa",.35));let P=()=>{let t=n.clientWidth||1,m=n.clientHeight||1;i.setSize(t,m,!1),a.aspect=t/m,a.updateProjectionMatrix()},C=new ResizeObserver(P);C.observe(n),P();let d={x:0,y:0},S=t=>{d.x=(t.clientX/window.innerWidth-.5)*2,d.y=(t.clientY/window.innerHeight-.5)*2};window.addEventListener("pointermove",S,{passive:!0});let l=!0,I=new IntersectionObserver(([t])=>{l=t.isIntersecting,l&&!o.reducedMotion&&p()});I.observe(n);let L=()=>{!document.hidden&&l&&!o.reducedMotion&&p()};document.addEventListener("visibilitychange",L);let O=new e.Clock,f=0,h=!1,k=()=>{let t=O.getElapsedTime();s.rotation.y+=.0035,s.rotation.x+=(.5+d.y*.35-s.rotation.x)*.04,s.rotation.z+=(.2+d.x*.3-s.rotation.z)*.04,s.position.y=Math.sin(t*.8)*.08,i.render(r,a)};function p(){if(h)return;h=!0;let t=()=>{if(!l||document.hidden){h=!1;return}k(),f=requestAnimationFrame(t)};f=requestAnimationFrame(t)}return k(),(G=o.onReady)==null||G.call(o),o.reducedMotion||p(),()=>{cancelAnimationFrame(f),I.disconnect(),C.disconnect(),window.removeEventListener("pointermove",S),document.removeEventListener("visibilitychange",L),v.dispose(),y.dispose(),M.dispose(),g.dispose(),i.dispose()}}function X(){try{let n=document.createElement("canvas");return!!(n.getContext("webgl2")||n.getContext("webgl"))}catch{return!1}}return K(Y);})();
+</script>
+<script>
+(function(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches||!("IntersectionObserver" in window))return;
+  var vh=innerHeight;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("pv-in");io.unobserve(e.target);}});},{rootMargin:"0px 0px -10% 0px"});
+  document.querySelectorAll("[data-reveal]").forEach(function(el){if(el.getBoundingClientRect().top>vh)io.observe(el);});
+})();
+(function(){ /* 3D tilt (stand-in for the Framer Motion Tilt component) */
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  document.querySelectorAll("[data-tilt]").forEach(function(el){
+    var max=+el.getAttribute("data-tilt")||8, sh=el.querySelector("[data-sheen]");
+    el.style.transition="transform .35s cubic-bezier(.16,1,.3,1)";
+    el.addEventListener("pointermove",function(e){ if(e.pointerType==="touch")return;
+      var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      el.style.transform="perspective(900px) rotateX("+((0.5-y)*2*max).toFixed(2)+"deg) rotateY("+((x-0.5)*2*max).toFixed(2)+"deg)";
+      if(sh)sh.style.background="radial-gradient(circle at "+x*100+"% "+y*100+"%, rgb(255 255 255 / .10), transparent 55%)";});
+    el.addEventListener("pointerleave",function(){el.style.transform="";});
+  });
+})();
+(function(){ /* real-time 3D hero object */
+  var host=document.querySelector("[data-hero3d]"); if(!host||!window.THREE||!window.LughaScene)return;
+  if(!LughaScene.hasWebGL())return;
+  var canvas=host.querySelector("canvas"), svg=host.firstElementChild;
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  try{ LughaScene.mountIridescentScene(canvas, THREE, {reducedMotion:reduce, onReady:function(){canvas.style.opacity=1; svg.style.opacity=0;}}); }catch(e){ console.warn(e); }
+})();
+</script>
+<script src="/detectives/detectives.js" defer></script></body>
+</html>

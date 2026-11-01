@@ -1,103 +1,45 @@
-import cors from "cors";
-import dotenv from "dotenv";
-import express, { Request, Response } from "express";
+# Lugha
 
-dotenv.config();
+A free language-learning app for people who can't pay for a course. Live at https://learnwithlughaa.korevatools.workers.dev
 
-const app = express();
-const port = Number(process.env.API_PORT || 4000);
+## What's here
 
-const lessons = [
-  {
-    id: "starter-phrases",
-    title: "Starter phrases",
-    level: "Beginner",
-    duration: 15,
-    description: "Everyday phrases for travel and introductions.",
-  },
-  {
-    id: "travel-essentials",
-    title: "Travel essentials",
-    level: "Beginner",
-    duration: 18,
-    description: "Navigate airports, hotels, and restaurants with confidence.",
-  },
-  {
-    id: "workplace-basics",
-    title: "Workplace basics",
-    level: "Intermediate",
-    duration: 22,
-    description: "Practice professional conversation and small talk.",
-  },
-  {
-    id: "conversation-flow",
-    title: "Conversation flow",
-    level: "Intermediate",
-    duration: 25,
-    description: "Move from words to natural, clear communication with practical dialogue.",
-  },
-];
+- `public/` is the website and the app (`public/app/`), exactly as deployed.
+- `worker/` serves `public/` and answers `/api/ai`, which powers every AI feature on the website: the tutor, planning trainer, email scoring, dictionary, flashcard generator, AI-made courses and interface translation. The AI key is a Worker secret and never reaches the browser.
+- `firestore.rules` holds the rules that keep each learner's saved progress private.
+- `test/` runs the app's real AI code through the Worker against a fake provider. It needs no keys and no internet.
 
-const vocabulary = [
-  { word: "Hola", translation: "Hello", category: "Greeting" },
-  { word: "Gracias", translation: "Thank you", category: "Politeness" },
-  { word: "Comida", translation: "Food", category: "Everyday" },
-  { word: "Viaje", translation: "Trip", category: "Travel" },
-  { word: "Trabajo", translation: "Work", category: "Career" },
-  { word: "Reunión", translation: "Meeting", category: "Work" },
-];
+## Run and deploy
 
-const progress = {
-  streak: 12,
-  lessonsCompleted: 34,
-  xpEarned: 1540,
-  mastery: 81,
-  nextMilestone: "Complete 2 more sessions this week",
-};
+You need Node.js 20 or newer.
 
-const profile = {
-  name: "Amara Parker",
-  language: "Spanish",
-  level: "Intermediate",
-  streak: 12,
-  weeklyGoal: "4/5 sessions",
-};
+```
+npx wrangler dev        # local copy at http://localhost:8787
+npx wrangler deploy     # publish to learnwithlughaa.korevatools.workers.dev
+node test/e2e.test.mjs  # check the AI path
+```
 
-app.use(cors());
-app.use(express.json());
+## Switch on AI (once)
 
-app.get("/health", (_req: Request, res: Response) => {
-  res.json({ status: "ok", service: "lugha-api" });
-});
+Use any OpenAI-compatible provider that's reachable from the internet. Base URLs:
 
-app.get("/api/hello", (_req: Request, res: Response) => {
-  res.json({
-    message: "Welcome to Lugha API",
-    status: "ready",
-    timestamp: new Date().toISOString(),
-  });
-});
+- Groq: `https://api.groq.com/openai/v1`
+- Cerebras: `https://api.cerebras.ai/v1`
+- Google AI Studio: `https://generativelanguage.googleapis.com/v1beta/openai`
 
-app.get("/api/lessons", (_req: Request, res: Response) => {
-  res.json({ lessons });
-});
+```
+npx wrangler secret put AI_BASE_URL
+npx wrangler secret put AI_API_KEY
+npx wrangler secret put AI_MODEL
+npx wrangler secret put AI_MODEL_QUICK   # optional: faster model for chat and dictionary
+```
 
-app.get("/api/vocabulary", (_req: Request, res: Response) => {
-  res.json({ vocabulary });
-});
+Each visitor can make 20 AI requests a minute. If wrangler rejects the `ratelimits` block in `wrangler.jsonc`, delete it; the Worker still runs, just without that limit.
 
-app.get("/api/progress", (_req: Request, res: Response) => {
-  res.json({ progress });
-});
+## Firebase
 
-app.get("/api/profile", (_req: Request, res: Response) => {
-  res.json({ profile });
-});
+The Firebase settings in `public/app/index.html` are meant to be public. What protects learners' progress is the Firestore rules: check in the Firebase console that they match `firestore.rules`.
 
-app.get("/api/overview", (_req: Request, res: Response) => {
-  res.json({ lessons, vocabulary, progress, profile });
-});
+## Limits
 
-app.listen(port, () => {
-  console.log(`API running on http://localhost:${port}`);
-});
+Everyone shares one AI key, so the provider's free daily quota is the ceiling for all learners combined. When it runs out, AI features say "Too many requests" until the quota resets. Lessons, flashcards and dictation keep working.

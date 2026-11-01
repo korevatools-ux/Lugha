@@ -1,0 +1,22 @@
+// Merge these settings into your existing wrangler config (wrangler.jsonc or wrangler.toml).
+// Keep "name" exactly as your current Worker's name, so the address stays
+// https://learnwithlughaa.korevatools.workers.dev
+{
+  "name": "learnwithlughaa",
+  "main": "worker/index.js",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    // The folder that holds your site's index.html, app/ and detectives/.
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+  // 20 AI requests per minute per visitor. If wrangler rejects this block,
+  // delete it: the Worker still runs, just without the per-visitor limit.
+  "ratelimits": [
+    {
+      "name": "AI_LIMITER",
+      "namespace_id": "1001",
+      "simple": { "limit": 20, "period": 60 }
+    }
+  ]
+}
