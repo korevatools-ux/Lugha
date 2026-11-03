@@ -1,0 +1,12 @@
+# Browser protection rules for the website's pages and files.
+# Cloudflare serves these files without running the Worker, so the rules live here;
+# the Worker adds the same ones to /api/ai answers.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: camera=(), geolocation=(), microphone=(self)
+
+/sw.js
+  Cache-Control: no-cache

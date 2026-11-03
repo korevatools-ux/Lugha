@@ -194,7 +194,8 @@ export async function handleAI(request, env, ctx) {
   return json({ text, truncated: choice.finish_reason === "length" });
 }
 
-// Browser protection rules for every page. No Content-Security-Policy yet: the app relies on
+// Browser protection rules for /api/ai answers (pages get the same ones from public/_headers,
+// because Cloudflare serves those files without running this Worker). No Content-Security-Policy yet: the app relies on
 // inline scripts, YouTube, Firebase and font hosts, and a strict policy would need testing first.
 const SECURITY_HEADERS = {
   "X-Content-Type-Options": "nosniff",
