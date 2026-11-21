@@ -1,0 +1,62 @@
+name: Lugha Flutter CI
+
+on:
+  pull_request:
+    paths:
+      - 'lib/**'
+      - 'test/**'
+      - 'pubspec.yaml'
+      - '.github/workflows/flutter-ci.yml'
+  push:
+    branches: [feature/lugha-flutter-client]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  flutter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.0'
+          cache: true
+      - name: Generate Android, iOS and Web scaffolding
+        run: flutter create --platforms=android,ios,web .
+      - run: flutter pub get
+      - run: flutter analyze --fatal-infos
+      - run: flutter test --reporter expanded
+      - run: flutter build apk --release
+      - run: flutter build web --release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Lugha-Flutter-Android-Web
+          path: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/web
+          if-no-files-found: error
+          retention-days: 14
+
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.0'
+          cache: true
+      - run: flutter create --platforms=windows .
+      - run: flutter pub get
+      - run: flutter build windows --release
+      - shell: pwsh
+        run: Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath Lugha-Windows.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Lugha-Flutter-Windows
+          path: Lugha-Windows.zip
+          if-no-files-found: error
+          retention-days: 14
