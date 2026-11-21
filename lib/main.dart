@@ -108,7 +108,7 @@ class _HomeState extends State<_Home> {
                 const SizedBox(height: 22),
                 Card(color: _surface, child: Padding(padding: const EdgeInsets.all(24),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Text('Lugha ' + module.name, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+                    Text('Lugha ${module.name}, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
                     const SizedBox(height: 8),
                     const Text('This module will be connected to the existing project services through a typed Flutter repository layer.', style: TextStyle(color: _muted, height: 1.5)),
                   ]),
