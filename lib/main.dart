@@ -39,7 +39,7 @@ const _modules = <_Module>[
 ];
 
 class _Home extends StatefulWidget {
-  const _Home({super.key});
+  const _Home();
   @override
   State<_Home> createState() => _HomeState();
 }
