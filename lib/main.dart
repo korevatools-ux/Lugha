@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'auth_gate.dart';
 
 const _background = Color(0xFF10151F);
 const _surface = Color(0xFF192231);
@@ -18,7 +19,9 @@ class LughaApp extends StatelessWidget {
     debugShowCheckedModeBanner: false,
     theme: ThemeData(brightness: Brightness.dark, scaffoldBackgroundColor: _background,
       colorScheme: ColorScheme.fromSeed(seedColor: _accent, brightness: Brightness.dark), useMaterial3: true),
-    home: const _Home(),
+    home: AuthGate(
+      authenticatedBuilder: (context, email, onSignOut) => _Home(accountEmail: email, onSignOut: onSignOut),
+    ),
   );
 }
 
@@ -39,7 +42,9 @@ const _modules = <_Module>[
 ];
 
 class _Home extends StatefulWidget {
-  const _Home();
+  const _Home({this.accountEmail, this.onSignOut});
+  final String? accountEmail;
+  final VoidCallback? onSignOut;
   @override
   State<_Home> createState() => _HomeState();
 }
@@ -59,6 +64,11 @@ class _HomeState extends State<_Home> {
             const Text('LUGHA', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, letterSpacing: 2)),
             const SizedBox(height: 5),
             const Text('Learn a language by using it', style: TextStyle(color: _muted, fontSize: 11)),
+            if (widget.accountEmail != null) ...[
+              const SizedBox(height: 12),
+              Text(widget.accountEmail!, style: const TextStyle(color: _muted, fontSize: 11), overflow: TextOverflow.ellipsis),
+              TextButton.icon(onPressed: widget.onSignOut, icon: const Icon(Icons.logout, size: 16), label: const Text('Sign out')),
+            ],
             const SizedBox(height: 32),
             const Text('WORKSPACE', style: TextStyle(color: _muted, fontSize: 10, letterSpacing: 1.5)),
             const SizedBox(height: 12),
