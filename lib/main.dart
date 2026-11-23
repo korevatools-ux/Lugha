@@ -66,11 +66,14 @@ class _HomeState extends State<_Home> {
               itemCount: _modules.length,
               itemBuilder: (context, i) => Padding(
                 padding: const EdgeInsets.only(bottom: 5),
-                child: ListTile(
-                  dense: true, selected: _index == i, selectedTileColor: const Color(0xFF2A3956),
-                  leading: Icon(_modules[i].icon, color: _index == i ? _accent : _muted),
-                  title: Text(_modules[i].name, style: TextStyle(color: _index == i ? Colors.white : _muted, fontSize: 13)),
-                  onTap: () => setState(() => _index = i),
+                child: Material(
+                  color: Colors.transparent,
+                  child: ListTile(
+                    dense: true, selected: _index == i, selectedTileColor: const Color(0xFF2A3956),
+                    leading: Icon(_modules[i].icon, color: _index == i ? _accent : _muted),
+                    title: Text(_modules[i].name, style: TextStyle(color: _index == i ? Colors.white : _muted, fontSize: 13)),
+                    onTap: () => setState(() => _index = i),
+                  ),
                 ),
               ),
             )),
