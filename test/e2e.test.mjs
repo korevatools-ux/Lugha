@@ -130,6 +130,16 @@ await check("pages carry browser protection headers", async () => {
   assert.match(r.headers.get("Permissions-Policy"), /microphone=\(self\)/);
 });
 
+await check("auth sign-out clears stale account state and pending cloud writes", async () => {
+  assert.match(html, /onAuthStateChanged\(async u=>\{ fbUser=u; clearTimeout\(pushT\); pushT=null;/);
+  assert.match(html, /else \{ cloudReady=false; S\.account=null; try\{ localStorage\.setItem\(KEY,JSON\.stringify\(S\)\);/);
+});
+await check("cloud sync ignores responses and queued writes from a previous account", async () => {
+  assert.match(html, /const user=fbUser, uid=user\.uid;/);
+  assert.match(html, /if\(!fbUser\|\|fbUser\.uid!==uid\) return;/);
+  assert.match(html, /const uid=fbUser\.uid;[\s\S]*?if\(!fbUser\|\|fbUser\.uid!==uid\|\|!cloudReady\) return;/);
+});
+
 for (const [s, n] of results) console.log(`${s}  ${n}`);
 const failed = results.filter(([s]) => s === "FAIL").length;
 console.log(`\n${results.length - failed}/${results.length} passed`);
