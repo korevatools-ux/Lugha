@@ -765,21 +765,25 @@ async function fbInit(){
   try{ for(const m of ["app","auth","firestore"]) await loadScript(`https://www.gstatic.com/firebasejs/${FB_V}/firebase-${m}-compat.js`); }catch(e){ return null; }
   firebase.initializeApp(FB_CFG); FB={auth:firebase.auth(),db:firebase.firestore()};
   try{ await FB.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL); }catch(e){}
-  FB.auth.onAuthStateChanged(async u=>{ fbUser=u; if(u){ S.account={uid:u.uid,email:u.email||"",name:u.displayName||"",photo:u.photoURL||"",via:(u.providerData[0]||{}).providerId||"password"}; if(!S.profile&&u.displayName){ S.profile=Object.assign(prof(),{name:u.displayName}); } await cloudPull(); } else { cloudReady=false; } paintAvatar(); if(curRoute==="settings") settings(); });
+  FB.auth.onAuthStateChanged(async u=>{ fbUser=u; clearTimeout(pushT); pushT=null; if(u){ S.account={uid:u.uid,email:u.email||"",name:u.displayName||"",photo:u.photoURL||"",via:(u.providerData[0]||{}).providerId||"password"}; if(!S.profile&&u.displayName){ S.profile=Object.assign(prof(),{name:u.displayName}); } await cloudPull(); } else { cloudReady=false; S.account=null; try{ localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){} } paintAvatar(); if(curRoute==="settings") settings(); });
   try{ await FB.auth.getRedirectResult(); }catch(e){}
   return FB;
 }
 async function cloudPull(){
   if(!FB||!fbUser) return;
-  try{ const d=await FB.db.collection("users").doc(fbUser.uid).get();
+  const user=fbUser, uid=user.uid;
+  try{ const d=await FB.db.collection("users").doc(uid).get();
+    if(!fbUser||fbUser.uid!==uid) return;
     if(d.exists){ const r=d.data(); const remote=JSON.parse(r.s||"{}"); const localAt=S.syncAt||0;
       if((r.at||0)>localAt||((S.xp||0)===0&&(remote.xp||0)>0)){ const acc=S.account; S=Object.assign(S,remote,{account:acc,syncAt:r.at}); try{ localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){} cloudReady=true; paintStats(); paintAvatar(); go(curRoute||"home"); return; } }
+    if(!fbUser||fbUser.uid!==uid) return;
     cloudReady=true; cloudPush(true);
-  }catch(e){ cloudReady=true; }
+  }catch(e){ if(fbUser&&fbUser.uid===uid) cloudReady=true; }
 }
 function cloudPush(now){
   if(!FB||!fbUser||!cloudReady) return; clearTimeout(pushT);
-  pushT=setTimeout(async()=>{ try{ const at=Date.now(); S.syncAt=at; try{ localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){} const copy=Object.assign({},S); delete copy.account; await FB.db.collection("users").doc(fbUser.uid).set({s:JSON.stringify(copy),at,name:(S.profile&&S.profile.name)||"",lang:curLang()}); }catch(e){} }, now?50:4000);
+  const uid=fbUser.uid;
+  pushT=setTimeout(async()=>{ if(!fbUser||fbUser.uid!==uid||!cloudReady) return; try{ const at=Date.now(); S.syncAt=at; try{ localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){} const copy=Object.assign({},S); delete copy.account; await FB.db.collection("users").doc(uid).set({s:JSON.stringify(copy),at,name:(S.profile&&S.profile.name)||"",lang:curLang()}); }catch(e){} }, now?50:4000);
 }
 function authErr(e){ const c=(e&&e.code)||""; return c.includes("wrong-password")||c.includes("invalid-credential")?"E-Mail oder Passwort stimmt nicht.":c.includes("user-not-found")?"Kein Konto mit dieser E-Mail.":c.includes("email-already-in-use")?"Diese E-Mail hat schon ein Konto. Bitte anmelden.":c.includes("weak-password")?"Das Passwort braucht mindestens 6 Zeichen.":c.includes("invalid-email")?"Bitte gib eine gültige E-Mail ein.":c.includes("popup-closed")||c.includes("cancelled")?"Anmeldung abgebrochen.":c.includes("network")?"Keine Internetverbindung.":"Das hat nicht geklappt. Bitte versuch es noch einmal."; }
 const GOOGLE_G=`<svg viewBox="0 0 48 48" width="20" height="20" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>`;
